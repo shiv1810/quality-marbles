@@ -3,10 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Quality Granite and Marble — custom stone fabrication and installation for kitchens, bathrooms, and commercial spaces since 1987."
+    />
     <title>Quality Granite and Marble</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Outfit:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -19,12 +24,17 @@
       }
 
       :root {
-        --cream: #f5f1eb;
-        --stone: #c9bfb0;
-        --charcoal: #1a1917;
-        --warm-mid: #8c8070;
-        --gold: #9e8b6b;
-        --offwhite: #faf8f5;
+        --bg: #f6f2ec;
+        --surface: #ffffff;
+        --ink: #141210;
+        --muted: #5c5650;
+        --line: rgba(20, 18, 16, 0.1);
+        --accent: #7a5c3a;
+        --accent-light: #c4a574;
+        --sage: #4a5d52;
+        --radius: 4px;
+        --ease: cubic-bezier(0.22, 1, 0.36, 1);
+        --nav-h: 72px;
       }
 
       html {
@@ -32,1191 +42,1305 @@
       }
 
       body {
-        font-family: "Jost", sans-serif;
-        font-weight: 300;
-        background: var(--charcoal);
-        color: var(--cream);
+        font-family: "Outfit", system-ui, sans-serif;
+        font-weight: 400;
+        background: var(--bg);
+        color: var(--ink);
+        line-height: 1.6;
         overflow-x: hidden;
       }
 
-      /* NAV */
-      nav {
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      /* ——— NAV ——— */
+      .site-header {
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
-        z-index: 100;
+        z-index: 200;
+        height: var(--nav-h);
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 2rem 5vw;
-        mix-blend-mode: normal;
+        padding: 0 clamp(1.25rem, 4vw, 3rem);
+        transition:
+          background 0.4s var(--ease),
+          box-shadow 0.4s var(--ease);
       }
 
-      nav::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          to bottom,
-          rgba(26, 25, 23, 0.7) 0%,
-          transparent 100%
-        );
-        pointer-events: none;
+      .site-header.scrolled {
+        background: rgba(246, 242, 236, 0.92);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 1px 0 var(--line);
       }
 
-      .nav-logo {
-        font-family: "Cormorant Garamond", serif;
-        font-weight: 300;
-        font-size: 1.35rem;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        color: var(--cream);
+      .logo {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: 1.05rem;
+        font-weight: 400;
+        letter-spacing: -0.02em;
         text-decoration: none;
-        position: relative;
       }
 
-      .nav-links {
-        display: flex;
-        gap: 3rem;
+      .logo strong {
+        font-weight: 500;
+      }
+
+      .nav-desktop {
+        display: none;
+        align-items: center;
+        gap: 2.5rem;
         list-style: none;
-        position: relative;
       }
 
-      .nav-links a {
-        font-size: 0.7rem;
-        letter-spacing: 0.2em;
+      .nav-desktop a {
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 0.04em;
         text-transform: uppercase;
-        color: var(--stone);
         text-decoration: none;
-        transition: color 0.3s;
+        color: var(--muted);
+        transition: color 0.25s;
       }
 
-      .nav-links a:hover {
-        color: var(--cream);
+      .nav-desktop a:hover {
+        color: var(--ink);
       }
 
       .nav-cta {
-        position: relative;
-        font-size: 0.7rem;
-        letter-spacing: 0.2em;
+        display: none;
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 0.04em;
         text-transform: uppercase;
-        color: var(--cream);
         text-decoration: none;
-        padding: 0.6rem 1.6rem;
-        border: 0.5px solid var(--stone);
-        transition: all 0.3s;
+        padding: 0.65rem 1.35rem;
+        background: var(--ink);
+        color: var(--bg);
+        border-radius: var(--radius);
+        transition:
+          background 0.25s,
+          transform 0.25s;
       }
 
       .nav-cta:hover {
-        background: var(--cream);
-        color: var(--charcoal);
-        border-color: var(--cream);
+        background: var(--accent);
+        transform: translateY(-1px);
       }
 
-      /* HERO */
-      .hero {
-        min-height: 100vh;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .hero-left {
+      .menu-toggle {
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
-        padding: 0 5vw 8vh 5vw;
-        position: relative;
-        z-index: 2;
+        justify-content: center;
+        gap: 6px;
+        width: 44px;
+        height: 44px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
       }
 
-      .hero-eyebrow {
-        font-size: 0.65rem;
-        letter-spacing: 0.35em;
-        text-transform: uppercase;
-        color: var(--gold);
-        margin-bottom: 2rem;
+      .menu-toggle span {
+        display: block;
+        height: 1.5px;
+        background: var(--ink);
+        transition:
+          transform 0.35s var(--ease),
+          opacity 0.25s;
+      }
+
+      .menu-toggle.open span:nth-child(1) {
+        transform: translateY(7.5px) rotate(45deg);
+      }
+      .menu-toggle.open span:nth-child(2) {
         opacity: 0;
-        animation: fadeUp 1s 0.3s forwards;
+      }
+      .menu-toggle.open span:nth-child(3) {
+        transform: translateY(-7.5px) rotate(-45deg);
       }
 
-      .hero-title {
-        font-family: "Cormorant Garamond", serif;
+      .mobile-menu {
+        position: fixed;
+        inset: 0;
+        z-index: 150;
+        background: var(--bg);
+        padding: calc(var(--nav-h) + 2rem) clamp(1.25rem, 4vw, 3rem) 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          opacity 0.4s var(--ease),
+          visibility 0.4s;
+      }
+
+      .mobile-menu.open {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .mobile-menu a {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: clamp(2rem, 8vw, 3rem);
         font-weight: 300;
-        font-size: clamp(3.5rem, 6vw, 7rem);
-        line-height: 0.92;
-        letter-spacing: -0.01em;
-        margin-bottom: 2.5rem;
-        opacity: 0;
-        animation: fadeUp 1s 0.5s forwards;
+        text-decoration: none;
+        padding: 0.35rem 0;
+        border-bottom: 1px solid var(--line);
+        transition: color 0.25s;
       }
 
-      .hero-title em {
+      .mobile-menu a:hover {
+        color: var(--accent);
+      }
+
+      .mobile-menu .nav-cta-mobile {
+        margin-top: 1.5rem;
+        font-family: "Outfit", sans-serif;
+        font-size: 0.85rem;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        display: inline-flex;
+        align-self: flex-start;
+        padding: 1rem 1.75rem;
+        background: var(--ink);
+        color: var(--bg);
+        border-radius: var(--radius);
+        border: none;
+      }
+
+      @media (min-width: 900px) {
+        .nav-desktop,
+        .nav-cta {
+          display: flex;
+        }
+        .menu-toggle {
+          display: none;
+        }
+      }
+
+      /* ——— HERO ——— */
+      .hero {
+        min-height: 100svh;
+        padding: calc(var(--nav-h) + 3rem) clamp(1.25rem, 4vw, 3rem) 4rem;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        align-items: end;
+      }
+
+      @media (min-width: 900px) {
+        .hero {
+          grid-template-columns: 1.1fr 0.9fr;
+          gap: 4vw;
+          padding-bottom: 5rem;
+        }
+      }
+
+      .hero-content {
+        max-width: 38rem;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: 0.72rem;
+        font-weight: 500;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 1.5rem;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 2rem;
+        height: 1px;
+        background: var(--accent);
+      }
+
+      .hero h1 {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: clamp(2.75rem, 7vw, 5.25rem);
+        font-weight: 300;
+        line-height: 1.05;
+        letter-spacing: -0.03em;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero h1 em {
         font-style: italic;
-        color: var(--stone);
+        color: var(--accent);
       }
 
-      .hero-desc {
-        font-size: 0.875rem;
-        line-height: 1.9;
-        color: var(--stone);
-        max-width: 380px;
-        margin-bottom: 3rem;
-        opacity: 0;
-        animation: fadeUp 1s 0.7s forwards;
+      .hero-lead {
+        font-size: 1.05rem;
+        font-weight: 300;
+        color: var(--muted);
+        max-width: 32rem;
+        margin-bottom: 2.25rem;
+        line-height: 1.75;
       }
 
       .hero-actions {
         display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .btn {
+        display: inline-flex;
         align-items: center;
-        gap: 2.5rem;
-        opacity: 0;
-        animation: fadeUp 1s 0.9s forwards;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 0.95rem 1.75rem;
+        border-radius: var(--radius);
+        transition:
+          background 0.25s,
+          color 0.25s,
+          transform 0.25s;
       }
 
       .btn-primary {
-        font-family: "Jost", sans-serif;
-        font-size: 0.7rem;
-        font-weight: 400;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: var(--charcoal);
-        background: var(--cream);
-        text-decoration: none;
-        padding: 1rem 2.5rem;
-        transition: all 0.3s;
+        background: var(--ink);
+        color: var(--bg);
       }
 
       .btn-primary:hover {
-        background: var(--stone);
+        background: var(--accent);
+        transform: translateY(-2px);
       }
 
-      .btn-ghost {
-        font-size: 0.7rem;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: var(--stone);
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        transition: color 0.3s;
+      .btn-outline {
+        border: 1px solid var(--line);
+        color: var(--ink);
       }
 
-      .btn-ghost::after {
-        content: "";
-        display: block;
-        width: 2rem;
-        height: 0.5px;
-        background: currentColor;
-        transition: width 0.3s;
+      .btn-outline:hover {
+        border-color: var(--ink);
+        background: var(--surface);
       }
 
-      .btn-ghost:hover {
-        color: var(--cream);
-      }
-      .btn-ghost:hover::after {
-        width: 3rem;
-      }
-
-      .hero-right {
+      .hero-visual {
         position: relative;
+        border-radius: var(--radius);
         overflow: hidden;
+        aspect-ratio: 4 / 5;
+        max-height: 70vh;
       }
 
-      .hero-img-wrap {
-        position: absolute;
-        inset: 0;
-        opacity: 0;
-        animation: fadeIn 1.5s 0.2s forwards;
+      @media (min-width: 900px) {
+        .hero-visual {
+          aspect-ratio: auto;
+          height: min(78vh, 720px);
+          max-height: none;
+        }
       }
 
-      /* Marble texture simulation using CSS */
-      .marble-texture {
-        position: absolute;
-        inset: 0;
-        background:
-          repeating-linear-gradient(
-            105deg,
-            transparent 0px,
-            transparent 8px,
-            rgba(255, 255, 255, 0.015) 8px,
-            rgba(255, 255, 255, 0.015) 9px
-          ),
-          repeating-linear-gradient(
-            70deg,
-            transparent 0px,
-            transparent 20px,
-            rgba(200, 190, 180, 0.04) 20px,
-            rgba(200, 190, 180, 0.04) 21px
-          ),
-          linear-gradient(
-            160deg,
-            #2a2722 0%,
-            #1e1c1a 25%,
-            #2e2b26 45%,
-            #1a1917 65%,
-            #252220 80%,
-            #1d1b18 100%
-          );
+      .hero-visual img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
 
-      .marble-overlay {
+      .hero-badge {
+        position: absolute;
+        bottom: 1.25rem;
+        left: 1.25rem;
+        right: 1.25rem;
+        background: rgba(255, 255, 255, 0.94);
+        backdrop-filter: blur(8px);
+        padding: 1rem 1.25rem;
+        border-radius: var(--radius);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .hero-badge span {
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .hero-badge strong {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: 1.35rem;
+        font-weight: 400;
+        color: var(--ink);
+      }
+
+      /* ——— MARQUEE STATS ——— */
+      .stats-marquee {
+        border-block: 1px solid var(--line);
+        background: var(--ink);
+        color: var(--bg);
+        overflow: hidden;
+        padding: 1.15rem 0;
+      }
+
+      .stats-track {
+        display: flex;
+        gap: 4rem;
+        width: max-content;
+        animation: marquee 28s linear infinite;
+      }
+
+      .stats-track:hover {
+        animation-play-state: paused;
+      }
+
+      @keyframes marquee {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      .stat-item {
+        display: flex;
+        align-items: baseline;
+        gap: 0.75rem;
+        white-space: nowrap;
+        padding: 0 0.5rem;
+      }
+
+      .stat-item strong {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: 1.5rem;
+        font-weight: 400;
+      }
+
+      .stat-item span {
+        font-size: 0.72rem;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        opacity: 0.55;
+      }
+
+      /* ——— SECTIONS ——— */
+      .wrap {
+        padding-inline: clamp(1.25rem, 4vw, 3rem);
+      }
+
+      .section {
+        padding-block: clamp(4rem, 10vw, 8rem);
+      }
+
+      .section-head {
+        margin-bottom: clamp(2.5rem, 5vw, 4rem);
+      }
+
+      .section-head.center {
+        text-align: center;
+        max-width: 40rem;
+        margin-inline: auto;
+      }
+
+      .section-head h2 {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: clamp(2rem, 4.5vw, 3.25rem);
+        font-weight: 300;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+      }
+
+      .section-head p {
+        margin-top: 1rem;
+        color: var(--muted);
+        font-weight: 300;
+        max-width: 36rem;
+        line-height: 1.75;
+      }
+
+      .section-head.center p {
+        margin-inline: auto;
+      }
+
+      /* ——— ABOUT ——— */
+      .about-grid {
+        display: grid;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      @media (min-width: 768px) {
+        .about-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 5vw;
+        }
+      }
+
+      .about-image {
+        border-radius: var(--radius);
+        overflow: hidden;
+        aspect-ratio: 5 / 4;
+      }
+
+      .about-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .about-text p + p {
+        margin-top: 1.25rem;
+        color: var(--muted);
+        font-weight: 300;
+        line-height: 1.8;
+      }
+
+      .pill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 2rem;
+      }
+
+      .pill {
+        font-size: 0.72rem;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 0.45rem 0.9rem;
+        border: 1px solid var(--line);
+        border-radius: 100px;
+        background: var(--surface);
+      }
+
+      /* ——— MATERIALS ——— */
+      .materials {
+        background: var(--ink);
+        color: var(--bg);
+        padding-block: clamp(4rem, 10vw, 8rem);
+      }
+
+      .materials .section-head h2,
+      .materials .eyebrow {
+        color: var(--bg);
+      }
+
+      .materials .eyebrow::before {
+        background: var(--accent-light);
+      }
+
+      .materials .eyebrow {
+        color: var(--accent-light);
+      }
+
+      .materials .section-head p {
+        color: rgba(246, 242, 236, 0.65);
+      }
+
+      .material-cards {
+        display: grid;
+        gap: 1px;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      @media (min-width: 768px) {
+        .material-cards {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      .material-card {
+        position: relative;
+        background: var(--ink);
+        overflow: hidden;
+        min-height: 420px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .material-card img {
         position: absolute;
         inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.45;
+        transition:
+          opacity 0.5s var(--ease),
+          transform 0.7s var(--ease);
+      }
+
+      .material-card:hover img {
+        opacity: 0.6;
+        transform: scale(1.04);
+      }
+
+      .material-card-body {
+        position: relative;
+        z-index: 1;
+        padding: 2rem;
         background: linear-gradient(
-          to right,
-          rgba(26, 25, 23, 0.85) 0%,
-          rgba(26, 25, 23, 0.2) 40%,
+          to top,
+          rgba(20, 18, 16, 0.95) 0%,
           transparent 100%
         );
       }
 
-      /* Veining */
-      .veins {
-        position: absolute;
-        inset: 0;
-        overflow: hidden;
+      .material-card .num {
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        color: var(--accent-light);
+        margin-bottom: 0.5rem;
       }
 
-      .veins svg {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        inset: 0;
-      }
-
-      /* STATS BAND */
-      .stats-band {
-        border-top: 0.5px solid rgba(201, 191, 176, 0.15);
-        border-bottom: 0.5px solid rgba(201, 191, 176, 0.15);
-        padding: 2.5rem 5vw;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 0;
-      }
-
-      .stat {
-        padding: 0 3rem;
-        border-right: 0.5px solid rgba(201, 191, 176, 0.15);
-        opacity: 0;
-        animation: fadeUp 0.8s forwards;
-      }
-
-      .stat:first-child {
-        padding-left: 0;
-      }
-      .stat:last-child {
-        border-right: none;
-      }
-
-      .stat-num {
-        font-family: "Cormorant Garamond", serif;
-        font-weight: 300;
-        font-size: 2.8rem;
-        line-height: 1;
-        color: var(--cream);
-        margin-bottom: 0.4rem;
-      }
-
-      .stat-label {
-        font-size: 0.65rem;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: var(--warm-mid);
-      }
-
-      /* ABOUT */
-      .section {
-        padding: 10rem 5vw;
-      }
-
-      .section-label {
-        font-size: 0.65rem;
-        letter-spacing: 0.3em;
-        text-transform: uppercase;
-        color: var(--gold);
-        margin-bottom: 3rem;
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-      }
-
-      .section-label::before {
-        content: "";
-        display: block;
-        width: 2.5rem;
-        height: 0.5px;
-        background: var(--gold);
-      }
-
-      .about-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 8vw;
-        align-items: center;
-      }
-
-      .about-heading {
-        font-family: "Cormorant Garamond", serif;
-        font-weight: 300;
-        font-size: clamp(2.5rem, 4vw, 4.5rem);
-        line-height: 1.05;
-        margin-bottom: 0;
-      }
-
-      .about-heading em {
-        font-style: italic;
-        color: var(--stone);
-      }
-
-      .about-body p {
-        font-size: 0.9rem;
-        line-height: 2;
-        color: var(--stone);
-        margin-bottom: 1.5rem;
-      }
-
-      .about-body p:last-child {
-        margin-bottom: 0;
-      }
-
-      /* MATERIALS */
-      .materials-section {
-        padding: 0 5vw 10rem;
-      }
-
-      .materials-heading {
-        font-family: "Cormorant Garamond", serif;
-        font-weight: 300;
-        font-size: clamp(2.5rem, 4vw, 4.5rem);
-        line-height: 1.05;
-        margin-bottom: 5rem;
-        max-width: 600px;
-      }
-
-      .materials-heading em {
-        font-style: italic;
-        color: var(--stone);
-      }
-
-      .materials-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1px;
-        background: rgba(201, 191, 176, 0.1);
-      }
-
-      .material-card {
-        background: var(--charcoal);
-        padding: 3rem 2.5rem;
-        position: relative;
-        overflow: hidden;
-        cursor: pointer;
-        transition: background 0.5s;
-      }
-
-      .material-card::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        opacity: 0;
-        transition: opacity 0.5s;
-      }
-
-      .material-card.marble::before {
-        background: linear-gradient(
-          135deg,
-          #2a2826 0%,
-          #1e1c18 50%,
-          #2c2a25 100%
-        );
-      }
-      .material-card.granite::before {
-        background: linear-gradient(
-          135deg,
-          #221e1c 0%,
-          #1a1817 50%,
-          #262422 100%
-        );
-      }
-      .material-card.travertine::before {
-        background: linear-gradient(
-          135deg,
-          #28241e 0%,
-          #1e1a16 50%,
-          #2a2620 100%
-        );
-      }
-
-      .material-card:hover::before {
-        opacity: 1;
-      }
-
-      .material-card:hover .material-num {
-        color: var(--gold);
-      }
-
-      .material-num {
-        font-family: "Cormorant Garamond", serif;
-        font-size: 0.85rem;
-        color: var(--warm-mid);
-        letter-spacing: 0.1em;
-        margin-bottom: 4rem;
-        position: relative;
-        transition: color 0.3s;
-      }
-
-      .material-name {
-        font-family: "Cormorant Garamond", serif;
-        font-weight: 300;
-        font-size: 2.2rem;
-        line-height: 1.1;
-        margin-bottom: 1.5rem;
-        position: relative;
-      }
-
-      .material-desc {
-        font-size: 0.8rem;
-        line-height: 1.9;
-        color: var(--warm-mid);
-        position: relative;
-      }
-
-      .material-arrow {
-        position: absolute;
-        bottom: 2.5rem;
-        right: 2.5rem;
-        width: 2rem;
-        height: 0.5px;
-        background: var(--warm-mid);
-        transition: all 0.3s;
-      }
-
-      .material-arrow::after {
-        content: "";
-        position: absolute;
-        right: 0;
-        top: -3px;
-        width: 6px;
-        height: 6px;
-        border-right: 0.5px solid var(--warm-mid);
-        border-bottom: 0.5px solid var(--warm-mid);
-        transform: rotate(-45deg);
-        transition: border-color 0.3s;
-      }
-
-      .material-card:hover .material-arrow {
-        width: 3rem;
-        background: var(--stone);
-      }
-      .material-card:hover .material-arrow::after {
-        border-color: var(--stone);
-      }
-
-      /* PROCESS */
-      .process-section {
-        padding: 0 5vw 10rem;
-        border-top: 0.5px solid rgba(201, 191, 176, 0.1);
-        padding-top: 10rem;
-      }
-
-      .process-intro {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 8vw;
-        margin-bottom: 7rem;
-        align-items: end;
-      }
-
-      .process-heading {
-        font-family: "Cormorant Garamond", serif;
-        font-weight: 300;
-        font-size: clamp(2.5rem, 4vw, 4.5rem);
-        line-height: 1.05;
-      }
-
-      .process-heading em {
-        font-style: italic;
-        color: var(--stone);
-      }
-
-      .process-subtext {
-        font-size: 0.875rem;
-        line-height: 2;
-        color: var(--stone);
-      }
-
-      .process-steps {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 0;
-        border-top: 0.5px solid rgba(201, 191, 176, 0.15);
-      }
-
-      .process-step {
-        padding: 3rem 2.5rem 3rem 0;
-        border-right: 0.5px solid rgba(201, 191, 176, 0.1);
-        padding-right: 2.5rem;
-        padding-left: 0;
-      }
-
-      .process-step:last-child {
-        border-right: none;
-        padding-right: 0;
-      }
-      .process-step:not(:first-child) {
-        padding-left: 2.5rem;
-      }
-
-      .step-num {
-        font-family: "Cormorant Garamond", serif;
-        font-size: 3.5rem;
-        font-weight: 300;
-        line-height: 1;
-        color: rgba(201, 191, 176, 0.15);
-        margin-bottom: 1.5rem;
-      }
-
-      .step-title {
-        font-family: "Cormorant Garamond", serif;
-        font-size: 1.3rem;
+      .material-card h3 {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: 1.75rem;
         font-weight: 400;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
       }
 
-      .step-desc {
-        font-size: 0.8rem;
-        line-height: 1.9;
-        color: var(--warm-mid);
-      }
-
-      /* QUOTE */
-      .quote-section {
-        padding: 8rem 5vw;
-        border-top: 0.5px solid rgba(201, 191, 176, 0.1);
-        border-bottom: 0.5px solid rgba(201, 191, 176, 0.1);
-        text-align: center;
-      }
-
-      .quote-text {
-        font-family: "Cormorant Garamond", serif;
+      .material-card p {
+        font-size: 0.85rem;
         font-weight: 300;
-        font-style: italic;
-        font-size: clamp(1.8rem, 3.5vw, 3.2rem);
-        line-height: 1.4;
-        max-width: 900px;
-        margin: 0 auto 2rem;
-        color: var(--cream);
+        color: rgba(246, 242, 236, 0.7);
+        line-height: 1.65;
       }
 
-      .quote-attr {
-        font-size: 0.65rem;
-        letter-spacing: 0.25em;
-        text-transform: uppercase;
-        color: var(--gold);
-      }
-
-      /* CONTACT */
-      .contact-section {
-        padding: 10rem 5vw;
+      /* ——— APPLICATIONS ——— */
+      .apps-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 8vw;
+        gap: 1rem;
+      }
+
+      @media (min-width: 600px) {
+        .apps-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .apps-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      .app-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 1.75rem;
+        transition:
+          border-color 0.3s,
+          transform 0.3s var(--ease);
+      }
+
+      .app-card:hover {
+        border-color: var(--accent-light);
+        transform: translateY(-4px);
+      }
+
+      .app-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        margin-bottom: 1.25rem;
+        color: var(--accent);
+      }
+
+      .app-card h3 {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: 1.2rem;
+        font-weight: 400;
+        margin-bottom: 0.5rem;
+      }
+
+      .app-card p {
+        font-size: 0.85rem;
+        color: var(--muted);
+        font-weight: 300;
+        line-height: 1.65;
+      }
+
+      /* ——— PROCESS ——— */
+      .process-list {
+        display: grid;
+        gap: 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .process-item {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 1.5rem 2rem;
+        padding: 2.5rem 0;
+        border-bottom: 1px solid var(--line);
         align-items: start;
       }
 
-      .contact-left .section-label {
-        margin-bottom: 2rem;
+      @media (min-width: 768px) {
+        .process-item {
+          grid-template-columns: 5rem 12rem 1fr;
+          gap: 2rem 3rem;
+        }
       }
 
-      .contact-heading {
-        font-family: "Cormorant Garamond", serif;
+      .process-num {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: 2.5rem;
         font-weight: 300;
-        font-size: clamp(2.5rem, 4vw, 4.5rem);
-        line-height: 1.05;
-        margin-bottom: 2.5rem;
+        color: var(--accent-light);
+        line-height: 1;
       }
 
-      .contact-heading em {
+      .process-item h3 {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: 1.35rem;
+        font-weight: 400;
+      }
+
+      .process-item p {
+        grid-column: 2 / -1;
+        color: var(--muted);
+        font-weight: 300;
+        line-height: 1.75;
+      }
+
+      @media (min-width: 768px) {
+        .process-item p {
+          grid-column: 3;
+          grid-row: 1;
+        }
+      }
+
+      /* ——— QUOTE ——— */
+      .quote-block {
+        background: var(--sage);
+        color: var(--bg);
+        padding: clamp(3.5rem, 8vw, 6rem) clamp(1.25rem, 4vw, 3rem);
+        text-align: center;
+      }
+
+      .quote-block blockquote {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+        font-weight: 300;
         font-style: italic;
-        color: var(--stone);
+        line-height: 1.45;
+        max-width: 52rem;
+        margin: 0 auto 1.5rem;
       }
 
-      .contact-note {
-        font-size: 0.875rem;
-        line-height: 2;
-        color: var(--stone);
+      .quote-block cite {
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-style: normal;
+        opacity: 0.7;
+      }
+
+      /* ——— CONTACT ——— */
+      .contact-grid {
+        display: grid;
+        gap: 3rem;
+      }
+
+      @media (min-width: 900px) {
+        .contact-grid {
+          grid-template-columns: 1fr 1.1fr;
+          gap: 5vw;
+          align-items: start;
+        }
+      }
+
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .contact-detail {
+        padding-top: 1.25rem;
+        border-top: 1px solid var(--line);
+      }
+
+      .contact-detail dt {
+        font-size: 0.68rem;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 0.35rem;
+      }
+
+      .contact-detail dd {
+        font-size: 1rem;
+        font-weight: 400;
+      }
+
+      .contact-detail a {
+        text-decoration: none;
+        transition: color 0.25s;
+      }
+
+      .contact-detail a:hover {
+        color: var(--accent);
       }
 
       .contact-form {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: clamp(1.5rem, 3vw, 2.5rem);
+      }
+
+      .form-grid {
+        display: grid;
+        gap: 1.25rem;
+      }
+
+      @media (min-width: 500px) {
+        .form-grid.two {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .field label {
+        display: block;
+        font-size: 0.68rem;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 0.4rem;
+      }
+
+      .field input,
+      .field select,
+      .field textarea {
+        width: 100%;
+        font-family: inherit;
+        font-size: 0.95rem;
+        font-weight: 400;
+        color: var(--ink);
+        background: var(--bg);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 0.85rem 1rem;
+        outline: none;
+        transition: border-color 0.25s;
+      }
+
+      .field input:focus,
+      .field select:focus,
+      .field textarea:focus {
+        border-color: var(--accent);
+      }
+
+      .field textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .form-foot {
+        margin-top: 1.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1rem 1.5rem;
+      }
+
+      .form-foot p {
+        font-size: 0.75rem;
+        color: var(--muted);
+        max-width: 16rem;
+        line-height: 1.5;
+      }
+
+      /* ——— FOOTER ——— */
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 2.5rem clamp(1.25rem, 4vw, 3rem);
         display: flex;
         flex-direction: column;
-        gap: 0;
+        gap: 1.5rem;
       }
 
-      .form-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0;
+      @media (min-width: 768px) {
+        footer {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+        }
       }
 
-      .form-field {
-        position: relative;
-        border-bottom: 0.5px solid rgba(201, 191, 176, 0.2);
-        padding: 1.5rem 0;
-        transition: border-color 0.3s;
-      }
-
-      .form-field:not(:last-child) {
-        border-right: 0.5px solid rgba(201, 191, 176, 0.1);
-      }
-
-      .form-field:focus-within {
-        border-color: var(--stone);
-      }
-
-      .form-field label {
-        display: block;
-        font-size: 0.6rem;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: var(--warm-mid);
-        margin-bottom: 0.5rem;
-        padding: 0 1.5rem;
-      }
-
-      .form-field input,
-      .form-field textarea,
-      .form-field select {
-        width: 100%;
-        background: none;
-        border: none;
-        outline: none;
-        font-family: "Jost", sans-serif;
-        font-weight: 300;
-        font-size: 0.9rem;
-        color: var(--cream);
-        padding: 0 1.5rem;
-        resize: none;
-      }
-
-      .form-field textarea {
-        min-height: 100px;
-        padding-top: 0.25rem;
-      }
-
-      .form-field select option {
-        background: var(--charcoal);
-      }
-
-      .form-submit {
-        margin-top: 2.5rem;
-        display: flex;
-        align-items: center;
-        gap: 2rem;
-      }
-
-      .form-submit button {
-        font-family: "Jost", sans-serif;
-        font-size: 0.7rem;
-        font-weight: 400;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: var(--charcoal);
-        background: var(--cream);
-        border: none;
-        padding: 1rem 2.5rem;
-        cursor: pointer;
-        transition: background 0.3s;
-      }
-
-      .form-submit button:hover {
-        background: var(--stone);
-      }
-
-      .form-privacy {
-        font-size: 0.7rem;
-        color: var(--warm-mid);
-        line-height: 1.7;
-      }
-
-      /* FOOTER */
-      footer {
-        border-top: 0.5px solid rgba(201, 191, 176, 0.1);
-        padding: 3rem 5vw;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-
-      .footer-logo {
-        font-family: "Cormorant Garamond", serif;
-        font-weight: 300;
-        font-size: 1.1rem;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: var(--stone);
+      .footer-brand {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: 1rem;
       }
 
       .footer-links {
         display: flex;
-        gap: 2.5rem;
+        flex-wrap: wrap;
+        gap: 1.5rem;
         list-style: none;
       }
 
       .footer-links a {
-        font-size: 0.65rem;
-        letter-spacing: 0.15em;
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.06em;
         text-transform: uppercase;
-        color: var(--warm-mid);
         text-decoration: none;
-        transition: color 0.3s;
+        color: var(--muted);
+        transition: color 0.25s;
       }
 
       .footer-links a:hover {
-        color: var(--stone);
+        color: var(--ink);
       }
 
       .footer-copy {
-        font-size: 0.65rem;
-        color: var(--warm-mid);
-        letter-spacing: 0.05em;
+        font-size: 0.75rem;
+        color: var(--muted);
       }
 
-      /* ANIMATIONS */
-      @keyframes fadeUp {
-        from {
-          opacity: 0;
-          transform: translateY(24px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-
+      /* ——— REVEAL ——— */
       .reveal {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(24px);
         transition:
-          opacity 0.8s ease,
-          transform 0.8s ease;
+          opacity 0.7s var(--ease),
+          transform 0.7s var(--ease);
       }
 
       .reveal.visible {
         opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* SCROLL INDICATOR */
-      .scroll-indicator {
-        position: absolute;
-        bottom: 3rem;
-        left: 5vw;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        opacity: 0;
-        animation: fadeUp 1s 1.2s forwards;
-        z-index: 2;
-      }
-
-      .scroll-line {
-        width: 0.5px;
-        height: 3rem;
-        background: rgba(201, 191, 176, 0.3);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .scroll-line::after {
-        content: "";
-        position: absolute;
-        top: -100%;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: var(--stone);
-        animation: scrollAnim 2s ease-in-out infinite 1.5s;
-      }
-
-      @keyframes scrollAnim {
-        0% {
-          top: -100%;
-        }
-        50% {
-          top: 0%;
-        }
-        100% {
-          top: 100%;
-        }
-      }
-
-      .scroll-text {
-        font-size: 0.6rem;
-        letter-spacing: 0.25em;
-        text-transform: uppercase;
-        color: var(--warm-mid);
-        writing-mode: vertical-rl;
-        transform: rotate(180deg);
+        transform: none;
       }
     </style>
   </head>
   <body>
-    <!-- NAV -->
-    <nav>
-      <a href="#" class="nav-logo">Quality Marble</a>
-      <ul class="nav-links">
-        <li><a href="#materials">Materials</a></li>
-        <li><a href="#process">Process</a></li>
+    <header class="site-header" id="header">
+      <a href="#" class="logo">Quality <strong>Granite &amp; Marble</strong></a>
+      <ul class="nav-desktop">
         <li><a href="#about">About</a></li>
-        <li><a href="#contact">Projects</a></li>
+        <li><a href="#materials">Materials</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#process">Process</a></li>
       </ul>
-      <a href="#contact" class="nav-cta">Request a Consultation</a>
+      <a href="#contact" class="nav-cta">Get a Quote</a>
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <a href="#about">About</a>
+      <a href="#materials">Materials</a>
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="nav-cta-mobile">Get a Quote</a>
     </nav>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-left">
-        <p class="hero-eyebrow">
-          Est. 1987 &nbsp;·&nbsp; Premium Natural Stone
-        </p>
-        <h1 class="hero-title">
-          Stone<br />
-          <em>Refined</em><br />
-          by Hand.
-        </h1>
-        <p class="hero-desc">
-          We source, cut, and install the world's finest marble, granite, and
-          travertine — for residential and commercial spaces that endure.
-        </p>
-        <div class="hero-actions">
-          <a href="#materials" class="btn-primary">Explore Materials</a>
-          <a href="#process" class="btn-ghost">Our Process</a>
+    <main>
+      <section class="hero">
+        <div class="hero-content reveal">
+          <p class="eyebrow">Est. 1987 · Natural Stone Specialists</p>
+          <h1>Surfaces built to <em>last generations.</em></h1>
+          <p class="hero-lead">
+            We source, fabricate, and install premium marble, granite, and
+            travertine for homes and commercial spaces — with the care only
+            decades of craft can deliver.
+          </p>
+          <div class="hero-actions">
+            <a href="#materials" class="btn btn-primary">View Materials</a>
+            <a href="#process" class="btn btn-outline">How We Work</a>
+          </div>
+        </div>
+        <div class="hero-visual reveal">
+          <img
+            src="https://images.unsplash.com/photo-1615873964967-57fea266e101?w=900&q=80"
+            alt="Polished white marble surface with natural veining"
+            width="900"
+            height="1125"
+            loading="eager"
+          />
+          <div class="hero-badge">
+            <span>Projects completed</span>
+            <strong>2,400+</strong>
+          </div>
+        </div>
+      </section>
+
+      <div class="stats-marquee" aria-hidden="true">
+        <div class="stats-track">
+          <div class="stat-item"><strong>35+</strong><span>Years of craft</span></div>
+          <div class="stat-item"><strong>2,400</strong><span>Projects delivered</span></div>
+          <div class="stat-item"><strong>18</strong><span>Quarry origins</span></div>
+          <div class="stat-item"><strong>100%</strong><span>Custom fabrication</span></div>
+          <div class="stat-item"><strong>35+</strong><span>Years of craft</span></div>
+          <div class="stat-item"><strong>2,400</strong><span>Projects delivered</span></div>
+          <div class="stat-item"><strong>18</strong><span>Quarry origins</span></div>
+          <div class="stat-item"><strong>100%</strong><span>Custom fabrication</span></div>
         </div>
       </div>
-      <div class="hero-right">
-        <div class="hero-img-wrap">
-          <div class="marble-texture"></div>
-          <div class="veins">
-            <svg
-              viewBox="0 0 600 900"
-              preserveAspectRatio="xMidYMid slice"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M 120 0 Q 200 150 160 300 Q 120 450 180 600 Q 240 750 200 900"
-                stroke="rgba(201,191,176,0.08)"
-                stroke-width="2"
-                fill="none"
-              />
-              <path
-                d="M 300 0 Q 350 200 320 350 Q 290 500 340 650 Q 390 800 360 900"
-                stroke="rgba(201,191,176,0.05)"
-                stroke-width="1.5"
-                fill="none"
-              />
-              <path
-                d="M 450 100 Q 420 250 460 400 Q 500 550 470 700 Q 440 800 480 900"
-                stroke="rgba(201,191,176,0.06)"
-                stroke-width="1"
-                fill="none"
-              />
-              <path
-                d="M 80 200 Q 150 300 100 450 Q 50 600 120 750"
-                stroke="rgba(201,191,176,0.04)"
-                stroke-width="1"
-                fill="none"
-              />
-              <path
-                d="M 500 50 Q 480 200 520 350 Q 560 500 540 650"
-                stroke="rgba(201,191,176,0.04)"
-                stroke-width="0.75"
-                fill="none"
-              />
-              <path
-                d="M 200 0 Q 250 100 220 250 Q 190 400 230 500 Q 270 600 240 750 Q 210 850 260 900"
-                stroke="rgba(201,191,176,0.035)"
-                stroke-width="1.2"
-                fill="none"
-              />
-              <path
-                d="M 380 200 Q 350 350 390 500 Q 430 650 400 800"
-                stroke="rgba(255,255,255,0.03)"
-                stroke-width="0.75"
-                fill="none"
-              />
+
+      <section class="section wrap" id="about">
+        <div class="about-grid">
+          <div class="about-image reveal">
+            <img
+              src="https://images.unsplash.com/photo-1600607687644-c7171b4243f5?w=800&q=80"
+              alt="Modern kitchen with stone countertops"
+              width="800"
+              height="640"
+              loading="lazy"
+            />
+          </div>
+          <div class="about-text">
+            <div class="section-head reveal">
+              <p class="eyebrow">About us</p>
+              <h2>Where geology meets thoughtful design.</h2>
+            </div>
+            <div class="reveal">
+              <p>
+                Quality Granite and Marble was founded on a simple belief: the
+                world's finest natural stone deserves craftspeople who know it
+                inside out. Every slab in our yard is hand-selected from
+                quarries across Italy, Brazil, Turkey, and India.
+              </p>
+              <p>
+                From kitchen islands to hotel lobbies, we bring geological
+                beauty into the places where life happens — with precision
+                cutting, meticulous finishing, and installation built to endure.
+              </p>
+              <div class="pill-list">
+                <span class="pill">Countertops</span>
+                <span class="pill">Flooring</span>
+                <span class="pill">Cladding</span>
+                <span class="pill">Commercial</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="materials" id="materials">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <p class="eyebrow">Our materials</p>
+            <h2>Three stones. Infinite possibilities.</h2>
+            <p>
+              Each material carries its own character. We help you choose the
+              right one for how you live and how the space performs.
+            </p>
+          </div>
+        </div>
+        <div class="material-cards">
+          <a href="#contact" class="material-card reveal">
+            <img
+              src="https://images.unsplash.com/photo-1615873964967-57fea266e101?w=600&q=80"
+              alt="Marble texture"
+              loading="lazy"
+            />
+            <div class="material-card-body">
+              <p class="num">01</p>
+              <h3>Marble</h3>
+              <p>
+                Calacatta, Statuario, Nero Marquina — metamorphic elegance from
+                Mediterranean quarries. Timeless in any application.
+              </p>
+            </div>
+          </a>
+          <a href="#contact" class="material-card reveal">
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80"
+              alt="Granite kitchen surface"
+              loading="lazy"
+            />
+            <div class="material-card-body">
+              <p class="num">02</p>
+              <h3>Granite</h3>
+              <p>
+                Igneous durability with crystalline depth. Ideal for
+                high-traffic surfaces — over 40 origins in stock.
+              </p>
+            </div>
+          </a>
+          <a href="#contact" class="material-card reveal">
+            <img
+              src="https://images.unsplash.com/photo-1600566753190-17f0baa422a6?w=600&q=80"
+              alt="Travertine stone flooring"
+              loading="lazy"
+            />
+            <div class="material-card-body">
+              <p class="num">03</p>
+              <h3>Travertine</h3>
+              <p>
+                Warm limestone formed over millennia. Perfect for floors,
+                facades, and outdoor spaces with Mediterranean character.
+              </p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="section wrap" id="work">
+        <div class="section-head center reveal">
+          <p class="eyebrow">Applications</p>
+          <h2>Stone for every room and scale.</h2>
+          <p>
+            Residential or commercial, intimate or grand — we tailor fabrication
+            and installation to your project.
+          </p>
+        </div>
+        <div class="apps-grid">
+          <article class="app-card reveal">
+            <svg class="app-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="1"/>
+              <path d="M3 9h18M9 21V9"/>
             </svg>
-          </div>
-          <div class="marble-overlay"></div>
+            <h3>Kitchens</h3>
+            <p>Countertops, islands, and backsplashes cut to your exact layout.</p>
+          </article>
+          <article class="app-card reveal">
+            <svg class="app-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M4 12h16M12 4v16"/>
+              <circle cx="12" cy="12" r="9"/>
+            </svg>
+            <h3>Bathrooms</h3>
+            <p>Vanities, shower surrounds, and wet-area surfaces that resist moisture.</p>
+          </article>
+          <article class="app-card reveal">
+            <svg class="app-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M3 21h18M5 21V7l7-4 7 4v14"/>
+            </svg>
+            <h3>Commercial</h3>
+            <p>Lobbies, reception desks, and feature walls for lasting first impressions.</p>
+          </article>
+          <article class="app-card reveal">
+            <svg class="app-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M4 20L12 4l8 16H4z"/>
+            </svg>
+            <h3>Exterior</h3>
+            <p>Cladding, paving, and outdoor living surfaces built for the elements.</p>
+          </article>
         </div>
-      </div>
-      <div class="scroll-indicator">
-        <div class="scroll-line"></div>
-        <span class="scroll-text">Scroll</span>
-      </div>
-    </section>
+      </section>
 
-    <!-- STATS BAND -->
-    <div class="stats-band">
-      <div class="stat" style="animation-delay: 0.1s">
-        <div class="stat-num">35+</div>
-        <div class="stat-label">Years of Craft</div>
-      </div>
-      <div class="stat" style="animation-delay: 0.2s">
-        <div class="stat-num">2,400</div>
-        <div class="stat-label">Projects Completed</div>
-      </div>
-      <div class="stat" style="animation-delay: 0.3s">
-        <div class="stat-num">18</div>
-        <div class="stat-label">Stone Origins</div>
-      </div>
-      <div class="stat" style="animation-delay: 0.4s">
-        <div class="stat-num">100%</div>
-        <div class="stat-label">Custom Fabrication</div>
-      </div>
-    </div>
-
-    <!-- ABOUT -->
-    <section class="section" id="about">
-      <div class="section-label reveal">About</div>
-      <div class="about-grid">
-        <div class="reveal">
-          <h2 class="about-heading">
-            Where geology<br />
-            meets <em>design.</em>
-          </h2>
-        </div>
-        <div class="about-body reveal">
+      <section class="section wrap" id="process">
+        <div class="section-head reveal">
+          <p class="eyebrow">How we work</p>
+          <h2>Precision at every stage.</h2>
           <p>
-            Pietra Stone Co. was founded on a single conviction: that the
-            world's finest natural stone deserves to be handled by craftspeople
-            who understand it deeply. Every slab in our inventory has been
-            hand-selected from quarries in Italy, Brazil, Turkey, and India.
-          </p>
-          <p>
-            From kitchen countertops to hotel lobbies, we bring geological
-            beauty into the places where life happens — with precision cutting,
-            meticulous finishing, and installation that treats every project as
-            a permanent statement.
+            From first visit to final polish, our process is transparent and
+            focused entirely on the result you have in mind.
           </p>
         </div>
-      </div>
-    </section>
+        <div class="process-list">
+          <article class="process-item reveal">
+            <span class="process-num">01</span>
+            <h3>Consultation</h3>
+            <p>
+              We visit your site, understand your vision, and walk you through
+              our inventory — in person or virtually.
+            </p>
+          </article>
+          <article class="process-item reveal">
+            <span class="process-num">02</span>
+            <h3>Slab selection</h3>
+            <p>
+              You choose your exact slab. No surprises — what you approve is
+              precisely what we install.
+            </p>
+          </article>
+          <article class="process-item reveal">
+            <span class="process-num">03</span>
+            <h3>Fabrication</h3>
+            <p>
+              CNC waterjet cutting paired with hand-finishing. Edge profiles,
+              inlays, and custom cuts — all in-house.
+            </p>
+          </article>
+          <article class="process-item reveal">
+            <span class="process-num">04</span>
+            <h3>Installation</h3>
+            <p>
+              Our teams install with care, seal the stone, and leave your space
+              clean and ready to enjoy for decades.
+            </p>
+          </article>
+        </div>
+      </section>
 
-    <!-- MATERIALS -->
-    <section class="materials-section" id="materials">
-      <div class="section-label reveal">Our Materials</div>
-      <h2 class="materials-heading reveal">
-        Each stone tells<br />
-        <em>its own story.</em>
-      </h2>
-      <div class="materials-grid reveal">
-        <div class="material-card marble">
-          <div class="material-num">01</div>
-          <h3 class="material-name">Marble</h3>
-          <p class="material-desc">
-            Calacatta, Statuario, Nero Marquina — classic metamorphic elegance
-            from the Italian Alps and Mediterranean quarries. Timeless in any
-            application.
-          </p>
-          <div class="material-arrow"></div>
-        </div>
-        <div class="material-card granite">
-          <div class="material-num">02</div>
-          <h3 class="material-name">Granite</h3>
-          <p class="material-desc">
-            Igneous durability with natural crystalline beauty. Superior
-            hardness for high-use surfaces. Available in over 40 origins, from
-            Brazilian Blue to Kashmir White.
-          </p>
-          <div class="material-arrow"></div>
-        </div>
-        <div class="material-card travertine">
-          <div class="material-num">03</div>
-          <h3 class="material-name">Travertine</h3>
-          <p class="material-desc">
-            The warmth of ancient limestone, formed over millennia. Ideal for
-            flooring, facades, and outdoor spaces seeking a natural
-            Mediterranean character.
-          </p>
-          <div class="material-arrow"></div>
-        </div>
+      <div class="quote-block reveal">
+        <blockquote>
+          "Stone is the one material that carries time within it — we simply
+          reveal what was always there."
+        </blockquote>
+        <cite>— Marco Pellini, Founder</cite>
       </div>
-    </section>
 
-    <!-- PROCESS -->
-    <section class="process-section" id="process">
-      <div class="process-intro">
-        <div class="reveal">
-          <div class="section-label" style="margin-bottom: 2rem">
-            How We Work
+      <section class="section wrap" id="contact">
+        <div class="contact-grid">
+          <div>
+            <div class="section-head reveal">
+              <p class="eyebrow">Get in touch</p>
+              <h2>Start your project.</h2>
+              <p>
+                Whether it's a single countertop or an entire building, tell us
+                about your vision. We typically respond within one business day.
+              </p>
+            </div>
+            <dl class="contact-info reveal">
+              <div class="contact-detail">
+                <dt>Phone</dt>
+                <dd><a href="tel:+15551234567">(555) 123-4567</a></dd>
+              </div>
+              <div class="contact-detail">
+                <dt>Email</dt>
+                <dd>
+                  <a href="mailto:hello@qualitymarble.com"
+                    >hello@qualitymarble.com</a
+                  >
+                </dd>
+              </div>
+              <div class="contact-detail">
+                <dt>Showroom</dt>
+                <dd>Mon–Fri 8am–5pm · Sat by appointment</dd>
+              </div>
+            </dl>
           </div>
-          <h2 class="process-heading">
-            Precision at<br />
-            <em>every stage.</em>
-          </h2>
+          <form class="contact-form reveal" action="#" method="post">
+            <div class="form-grid two">
+              <div class="field">
+                <label for="fname">First name</label>
+                <input type="text" id="fname" name="fname" required />
+              </div>
+              <div class="field">
+                <label for="lname">Last name</label>
+                <input type="text" id="lname" name="lname" required />
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+              <div class="field">
+                <label for="ptype">Project type</label>
+                <select id="ptype" name="ptype">
+                  <option value="">Select a category</option>
+                  <option>Residential kitchen</option>
+                  <option>Residential bathroom</option>
+                  <option>Commercial lobby</option>
+                  <option>Flooring</option>
+                  <option>Cladding / facade</option>
+                  <option>Custom / other</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="message">Tell us about your project</label>
+                <textarea id="message" name="message" rows="4"></textarea>
+              </div>
+            </div>
+            <div class="form-foot">
+              <button type="submit" class="btn btn-primary">
+                Send enquiry
+              </button>
+              <p>
+                Your information stays private and is never shared with third
+                parties.
+              </p>
+            </div>
+          </form>
         </div>
-        <p class="process-subtext reveal">
-          From first consultation to final polish, our process is designed to be
-          thorough, transparent, and entirely focused on the result you have in
-          mind.
-        </p>
-      </div>
-      <div class="process-steps">
-        <div class="process-step reveal">
-          <div class="step-num">01</div>
-          <h3 class="step-title">Consultation</h3>
-          <p class="step-desc">
-            We visit the site, understand your vision, and walk you through our
-            full inventory — in person or virtually.
-          </p>
-        </div>
-        <div class="process-step reveal">
-          <div class="step-num">02</div>
-          <h3 class="step-title">Slab Selection</h3>
-          <p class="step-desc">
-            You view and choose your exact slab. No surprises — what you approve
-            is precisely what we install.
-          </p>
-        </div>
-        <div class="process-step reveal">
-          <div class="step-num">03</div>
-          <h3 class="step-title">Fabrication</h3>
-          <p class="step-desc">
-            CNC waterjet cutting combined with hand-finishing by our master
-            craftspeople. Edge profiles, inlays, and custom cuts are all handled
-            in-house.
-          </p>
-        </div>
-        <div class="process-step reveal">
-          <div class="step-num">04</div>
-          <h3 class="step-title">Installation</h3>
-          <p class="step-desc">
-            Our installation teams work with precision and care. We leave the
-            site clean, the stone sealed, and the work ready to last a lifetime.
-          </p>
-        </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
-    <!-- QUOTE -->
-    <div class="quote-section">
-      <blockquote class="quote-text reveal">
-        "Stone is the one material that carries time within it — we simply
-        reveal what was always there."
-      </blockquote>
-      <p class="quote-attr reveal">— Marco Pellini, Founder</p>
-    </div>
-
-    <!-- CONTACT -->
-    <section class="contact-section" id="contact">
-      <div class="contact-left reveal">
-        <div class="section-label">Get in Touch</div>
-        <h2 class="contact-heading">
-          Start your<br />
-          <em>project.</em>
-        </h2>
-        <p class="contact-note">
-          Whether you're designing a single surface or an entire space, we'd
-          love to hear about your vision. Our team typically responds within one
-          business day.
-        </p>
-      </div>
-      <div class="contact-form reveal">
-        <div class="form-row">
-          <div class="form-field">
-            <label for="fname">First Name</label>
-            <input type="text" id="fname" placeholder="" />
-          </div>
-          <div
-            class="form-field"
-            style="border-left: none; padding-left: 1.5rem"
-          >
-            <label for="lname">Last Name</label>
-            <input type="text" id="lname" />
-          </div>
-        </div>
-        <div class="form-field">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" />
-        </div>
-        <div class="form-field">
-          <label for="ptype">Project Type</label>
-          <select id="ptype">
-            <option value="">Select a category</option>
-            <option>Residential Kitchen</option>
-            <option>Residential Bathroom</option>
-            <option>Commercial Lobby</option>
-            <option>Flooring</option>
-            <option>Cladding / Facade</option>
-            <option>Custom / Other</option>
-          </select>
-        </div>
-        <div class="form-field">
-          <label for="message">Tell Us About Your Project</label>
-          <textarea id="message" rows="4"></textarea>
-        </div>
-        <div class="form-submit">
-          <button type="submit">Send Enquiry</button>
-          <p class="form-privacy">
-            Your information is kept private and never shared with third
-            parties.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
     <footer>
-      <div class="footer-logo">Pietra Stone Co.</div>
+      <div class="footer-brand">Quality Granite &amp; Marble</div>
       <ul class="footer-links">
         <li><a href="#">Privacy</a></li>
         <li><a href="#">Instagram</a></li>
         <li><a href="#">Houzz</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
-      <p class="footer-copy">© 2025 Pietra Stone Co. All rights reserved.</p>
+      <p class="footer-copy">© 2025 Quality Granite and Marble. All rights reserved.</p>
     </footer>
 
     <script>
+      const header = document.getElementById("header");
+      const menuToggle = document.getElementById("menuToggle");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      window.addEventListener(
+        "scroll",
+        () => header.classList.toggle("scrolled", window.scrollY > 40),
+        { passive: true },
+      );
+
+      function closeMenu() {
+        menuToggle.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open menu");
+        mobileMenu.classList.remove("open");
+        mobileMenu.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
+
+      menuToggle.addEventListener("click", () => {
+        const open = menuToggle.classList.toggle("open");
+        menuToggle.setAttribute("aria-expanded", String(open));
+        menuToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+        mobileMenu.classList.toggle("open", open);
+        mobileMenu.setAttribute("aria-hidden", String(!open));
+        document.body.style.overflow = open ? "hidden" : "";
+      });
+
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeMenu);
+      });
+
       const reveals = document.querySelectorAll(".reveal");
       const observer = new IntersectionObserver(
         (entries) => {
-          entries.forEach((entry, i) => {
+          entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              setTimeout(() => {
-                entry.target.classList.add("visible");
-              }, 80);
+              entry.target.classList.add("visible");
               observer.unobserve(entry.target);
             }
           });
         },
-        { threshold: 0.1, rootMargin: "0px 0px -60px 0px" },
+        { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
       );
-
       reveals.forEach((el) => observer.observe(el));
-
-      // Stagger children in grids
-      document
-        .querySelectorAll(
-          ".materials-grid .material-card, .process-steps .process-step, .stats-band .stat",
-        )
-        .forEach((el, i) => {
-          el.style.animationDelay = `${i * 0.12 + 0.1}s`;
-        });
     </script>
   </body>
 </html>
