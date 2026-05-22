@@ -3,1344 +3,171 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Quality Granite and Marble — custom stone fabrication and installation for kitchens, bathrooms, and commercial spaces since 1987."
-    />
+    <meta name="description" content="Quality Granite and Marble — stone fabrication since 1987." />
     <title>Quality Granite and Marble</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Outfit:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      *,
-      *::before,
-      *::after {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      :root {
-        --bg: #f6f2ec;
-        --surface: #ffffff;
-        --ink: #141210;
-        --muted: #5c5650;
-        --line: rgba(20, 18, 16, 0.1);
-        --accent: #7a5c3a;
-        --accent-light: #c4a574;
-        --sage: #4a5d52;
-        --radius: 4px;
-        --ease: cubic-bezier(0.22, 1, 0.36, 1);
-        --nav-h: 72px;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        font-family: "Outfit", system-ui, sans-serif;
-        font-weight: 400;
-        background: var(--bg);
-        color: var(--ink);
-        line-height: 1.6;
-        overflow-x: hidden;
-      }
-
-      img {
-        display: block;
-        max-width: 100%;
-      }
-
-      a {
-        color: inherit;
-      }
-
-      /* ——— NAV ——— */
-      .site-header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 200;
-        height: var(--nav-h);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 clamp(1.25rem, 4vw, 3rem);
-        transition:
-          background 0.4s var(--ease),
-          box-shadow 0.4s var(--ease);
-      }
-
-      .site-header.scrolled {
-        background: rgba(246, 242, 236, 0.92);
-        backdrop-filter: blur(12px);
-        box-shadow: 0 1px 0 var(--line);
-      }
-
-      .logo {
-        font-family: "Fraunces", Georgia, serif;
-        font-size: 1.05rem;
-        font-weight: 400;
-        letter-spacing: -0.02em;
-        text-decoration: none;
-      }
-
-      .logo strong {
-        font-weight: 500;
-      }
-
-      .nav-desktop {
-        display: none;
-        align-items: center;
-        gap: 2.5rem;
-        list-style: none;
-      }
-
-      .nav-desktop a {
-        font-size: 0.8rem;
-        font-weight: 500;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
-        text-decoration: none;
-        color: var(--muted);
-        transition: color 0.25s;
-      }
-
-      .nav-desktop a:hover {
-        color: var(--ink);
-      }
-
-      .nav-cta {
-        display: none;
-        font-size: 0.8rem;
-        font-weight: 500;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
-        text-decoration: none;
-        padding: 0.65rem 1.35rem;
-        background: var(--ink);
-        color: var(--bg);
-        border-radius: var(--radius);
-        transition:
-          background 0.25s,
-          transform 0.25s;
-      }
-
-      .nav-cta:hover {
-        background: var(--accent);
-        transform: translateY(-1px);
-      }
-
-      .menu-toggle {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 6px;
-        width: 44px;
-        height: 44px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 10px;
-      }
-
-      .menu-toggle span {
-        display: block;
-        height: 1.5px;
-        background: var(--ink);
-        transition:
-          transform 0.35s var(--ease),
-          opacity 0.25s;
-      }
-
-      .menu-toggle.open span:nth-child(1) {
-        transform: translateY(7.5px) rotate(45deg);
-      }
-      .menu-toggle.open span:nth-child(2) {
-        opacity: 0;
-      }
-      .menu-toggle.open span:nth-child(3) {
-        transform: translateY(-7.5px) rotate(-45deg);
-      }
-
-      .mobile-menu {
-        position: fixed;
-        inset: 0;
-        z-index: 150;
-        background: var(--bg);
-        padding: calc(var(--nav-h) + 2rem) clamp(1.25rem, 4vw, 3rem) 2rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        opacity: 0;
-        visibility: hidden;
-        transition:
-          opacity 0.4s var(--ease),
-          visibility 0.4s;
-      }
-
-      .mobile-menu.open {
-        opacity: 1;
-        visibility: visible;
-      }
-
-      .mobile-menu a {
-        font-family: "Fraunces", Georgia, serif;
-        font-size: clamp(2rem, 8vw, 3rem);
-        font-weight: 300;
-        text-decoration: none;
-        padding: 0.35rem 0;
-        border-bottom: 1px solid var(--line);
-        transition: color 0.25s;
-      }
-
-      .mobile-menu a:hover {
-        color: var(--accent);
-      }
-
-      .mobile-menu .nav-cta-mobile {
-        margin-top: 1.5rem;
-        font-family: "Outfit", sans-serif;
-        font-size: 0.85rem;
-        font-weight: 500;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        display: inline-flex;
-        align-self: flex-start;
-        padding: 1rem 1.75rem;
-        background: var(--ink);
-        color: var(--bg);
-        border-radius: var(--radius);
-        border: none;
-      }
-
-      @media (min-width: 900px) {
-        .nav-desktop,
-        .nav-cta {
-          display: flex;
-        }
-        .menu-toggle {
-          display: none;
-        }
-      }
-
-      /* ——— HERO ——— */
-      .hero {
-        min-height: 100svh;
-        padding: calc(var(--nav-h) + 3rem) clamp(1.25rem, 4vw, 3rem) 4rem;
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 3rem;
-        align-items: end;
-      }
-
-      @media (min-width: 900px) {
-        .hero {
-          grid-template-columns: 1.1fr 0.9fr;
-          gap: 4vw;
-          padding-bottom: 5rem;
-        }
-      }
-
-      .hero-content {
-        max-width: 38rem;
-      }
-
-      .eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.75rem;
-        font-size: 0.72rem;
-        font-weight: 500;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--accent);
-        margin-bottom: 1.5rem;
-      }
-
-      .eyebrow::before {
-        content: "";
-        width: 2rem;
-        height: 1px;
-        background: var(--accent);
-      }
-
-      .hero h1 {
-        font-family: "Fraunces", Georgia, serif;
-        font-size: clamp(2.75rem, 7vw, 5.25rem);
-        font-weight: 300;
-        line-height: 1.05;
-        letter-spacing: -0.03em;
-        margin-bottom: 1.5rem;
-      }
-
-      .hero h1 em {
-        font-style: italic;
-        color: var(--accent);
-      }
-
-      .hero-lead {
-        font-size: 1.05rem;
-        font-weight: 300;
-        color: var(--muted);
-        max-width: 32rem;
-        margin-bottom: 2.25rem;
-        line-height: 1.75;
-      }
-
-      .hero-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
-
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 0.8rem;
-        font-weight: 500;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        text-decoration: none;
-        padding: 0.95rem 1.75rem;
-        border-radius: var(--radius);
-        transition:
-          background 0.25s,
-          color 0.25s,
-          transform 0.25s;
-      }
-
-      .btn-primary {
-        background: var(--ink);
-        color: var(--bg);
-      }
-
-      .btn-primary:hover {
-        background: var(--accent);
-        transform: translateY(-2px);
-      }
-
-      .btn-outline {
-        border: 1px solid var(--line);
-        color: var(--ink);
-      }
-
-      .btn-outline:hover {
-        border-color: var(--ink);
-        background: var(--surface);
-      }
-
-      .hero-visual {
-        position: relative;
-        border-radius: var(--radius);
-        overflow: hidden;
-        aspect-ratio: 4 / 5;
-        max-height: 70vh;
-      }
-
-      @media (min-width: 900px) {
-        .hero-visual {
-          aspect-ratio: auto;
-          height: min(78vh, 720px);
-          max-height: none;
-        }
-      }
-
-      .hero-visual img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .hero-badge {
-        position: absolute;
-        bottom: 1.25rem;
-        left: 1.25rem;
-        right: 1.25rem;
-        background: rgba(255, 255, 255, 0.94);
-        backdrop-filter: blur(8px);
-        padding: 1rem 1.25rem;
-        border-radius: var(--radius);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 1rem;
-      }
-
-      .hero-badge span {
-        font-size: 0.75rem;
-        font-weight: 500;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        color: var(--muted);
-      }
-
-      .hero-badge strong {
-        font-family: "Fraunces", Georgia, serif;
-        font-size: 1.35rem;
-        font-weight: 400;
-        color: var(--ink);
-      }
-
-      /* ——— MARQUEE STATS ——— */
-      .stats-marquee {
-        border-block: 1px solid var(--line);
-        background: var(--ink);
-        color: var(--bg);
-        overflow: hidden;
-        padding: 1.15rem 0;
-      }
-
-      .stats-track {
-        display: flex;
-        gap: 4rem;
-        width: max-content;
-        animation: marquee 28s linear infinite;
-      }
-
-      .stats-track:hover {
-        animation-play-state: paused;
-      }
-
-      @keyframes marquee {
-        from {
-          transform: translateX(0);
-        }
-        to {
-          transform: translateX(-50%);
-        }
-      }
-
-      .stat-item {
-        display: flex;
-        align-items: baseline;
-        gap: 0.75rem;
-        white-space: nowrap;
-        padding: 0 0.5rem;
-      }
-
-      .stat-item strong {
-        font-family: "Fraunces", Georgia, serif;
-        font-size: 1.5rem;
-        font-weight: 400;
-      }
-
-      .stat-item span {
-        font-size: 0.72rem;
-        font-weight: 500;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        opacity: 0.55;
-      }
-
-      /* ——— SECTIONS ——— */
-      .wrap {
-        padding-inline: clamp(1.25rem, 4vw, 3rem);
-      }
-
-      .section {
-        padding-block: clamp(4rem, 10vw, 8rem);
-      }
-
-      .section-head {
-        margin-bottom: clamp(2.5rem, 5vw, 4rem);
-      }
-
-      .section-head.center {
-        text-align: center;
-        max-width: 40rem;
-        margin-inline: auto;
-      }
-
-      .section-head h2 {
-        font-family: "Fraunces", Georgia, serif;
-        font-size: clamp(2rem, 4.5vw, 3.25rem);
-        font-weight: 300;
-        line-height: 1.1;
-        letter-spacing: -0.02em;
-      }
-
-      .section-head p {
-        margin-top: 1rem;
-        color: var(--muted);
-        font-weight: 300;
-        max-width: 36rem;
-        line-height: 1.75;
-      }
-
-      .section-head.center p {
-        margin-inline: auto;
-      }
-
-      /* ——— ABOUT ——— */
-      .about-grid {
-        display: grid;
-        gap: 3rem;
-        align-items: center;
-      }
-
-      @media (min-width: 768px) {
-        .about-grid {
-          grid-template-columns: 1fr 1fr;
-          gap: 5vw;
-        }
-      }
-
-      .about-image {
-        border-radius: var(--radius);
-        overflow: hidden;
-        aspect-ratio: 5 / 4;
-      }
-
-      .about-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .about-text p + p {
-        margin-top: 1.25rem;
-        color: var(--muted);
-        font-weight: 300;
-        line-height: 1.8;
-      }
-
-      .pill-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-top: 2rem;
-      }
-
-      .pill {
-        font-size: 0.72rem;
-        font-weight: 500;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        padding: 0.45rem 0.9rem;
-        border: 1px solid var(--line);
-        border-radius: 100px;
-        background: var(--surface);
-      }
-
-      /* ——— MATERIALS ——— */
-      .materials {
-        background: var(--ink);
-        color: var(--bg);
-        padding-block: clamp(4rem, 10vw, 8rem);
-      }
-
-      .materials .section-head h2,
-      .materials .eyebrow {
-        color: var(--bg);
-      }
-
-      .materials .eyebrow::before {
-        background: var(--accent-light);
-      }
-
-      .materials .eyebrow {
-        color: var(--accent-light);
-      }
-
-      .materials .section-head p {
-        color: rgba(246, 242, 236, 0.65);
-      }
-
-      .material-cards {
-        display: grid;
-        gap: 1px;
-        background: rgba(255, 255, 255, 0.08);
-      }
-
-      @media (min-width: 768px) {
-        .material-cards {
-          grid-template-columns: repeat(3, 1fr);
-        }
-      }
-
-      .material-card {
-        position: relative;
-        background: var(--ink);
-        overflow: hidden;
-        min-height: 420px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        text-decoration: none;
-        color: inherit;
-      }
-
-      .material-card img {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        opacity: 0.45;
-        transition:
-          opacity 0.5s var(--ease),
-          transform 0.7s var(--ease);
-      }
-
-      .material-card:hover img {
-        opacity: 0.6;
-        transform: scale(1.04);
-      }
-
-      .material-card-body {
-        position: relative;
-        z-index: 1;
-        padding: 2rem;
-        background: linear-gradient(
-          to top,
-          rgba(20, 18, 16, 0.95) 0%,
-          transparent 100%
-        );
-      }
-
-      .material-card .num {
-        font-size: 0.7rem;
-        font-weight: 500;
-        letter-spacing: 0.12em;
-        color: var(--accent-light);
-        margin-bottom: 0.5rem;
-      }
-
-      .material-card h3 {
-        font-family: "Fraunces", Georgia, serif;
-        font-size: 1.75rem;
-        font-weight: 400;
-        margin-bottom: 0.5rem;
-      }
-
-      .material-card p {
-        font-size: 0.85rem;
-        font-weight: 300;
-        color: rgba(246, 242, 236, 0.7);
-        line-height: 1.65;
-      }
-
-      /* ——— APPLICATIONS ——— */
-      .apps-grid {
-        display: grid;
-        gap: 1rem;
-      }
-
-      @media (min-width: 600px) {
-        .apps-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-
-      @media (min-width: 1024px) {
-        .apps-grid {
-          grid-template-columns: repeat(4, 1fr);
-        }
-      }
-
-      .app-card {
-        background: var(--surface);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        padding: 1.75rem;
-        transition:
-          border-color 0.3s,
-          transform 0.3s var(--ease);
-      }
-
-      .app-card:hover {
-        border-color: var(--accent-light);
-        transform: translateY(-4px);
-      }
-
-      .app-icon {
-        width: 2.5rem;
-        height: 2.5rem;
-        margin-bottom: 1.25rem;
-        color: var(--accent);
-      }
-
-      .app-card h3 {
-        font-family: "Fraunces", Georgia, serif;
-        font-size: 1.2rem;
-        font-weight: 400;
-        margin-bottom: 0.5rem;
-      }
-
-      .app-card p {
-        font-size: 0.85rem;
-        color: var(--muted);
-        font-weight: 300;
-        line-height: 1.65;
-      }
-
-      /* ——— PROCESS ——— */
-      .process-list {
-        display: grid;
-        gap: 0;
-        border-top: 1px solid var(--line);
-      }
-
-      .process-item {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        gap: 1.5rem 2rem;
-        padding: 2.5rem 0;
-        border-bottom: 1px solid var(--line);
-        align-items: start;
-      }
-
-      @media (min-width: 768px) {
-        .process-item {
-          grid-template-columns: 5rem 12rem 1fr;
-          gap: 2rem 3rem;
-        }
-      }
-
-      .process-num {
-        font-family: "Fraunces", Georgia, serif;
-        font-size: 2.5rem;
-        font-weight: 300;
-        color: var(--accent-light);
-        line-height: 1;
-      }
-
-      .process-item h3 {
-        font-family: "Fraunces", Georgia, serif;
-        font-size: 1.35rem;
-        font-weight: 400;
-      }
-
-      .process-item p {
-        grid-column: 2 / -1;
-        color: var(--muted);
-        font-weight: 300;
-        line-height: 1.75;
-      }
-
-      @media (min-width: 768px) {
-        .process-item p {
-          grid-column: 3;
-          grid-row: 1;
-        }
-      }
-
-      /* ——— QUOTE ——— */
-      .quote-block {
-        background: var(--sage);
-        color: var(--bg);
-        padding: clamp(3.5rem, 8vw, 6rem) clamp(1.25rem, 4vw, 3rem);
-        text-align: center;
-      }
-
-      .quote-block blockquote {
-        font-family: "Fraunces", Georgia, serif;
-        font-size: clamp(1.5rem, 3.5vw, 2.5rem);
-        font-weight: 300;
-        font-style: italic;
-        line-height: 1.45;
-        max-width: 52rem;
-        margin: 0 auto 1.5rem;
-      }
-
-      .quote-block cite {
-        font-size: 0.75rem;
-        font-weight: 500;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        font-style: normal;
-        opacity: 0.7;
-      }
-
-      /* ——— CONTACT ——— */
-      .contact-grid {
-        display: grid;
-        gap: 3rem;
-      }
-
-      @media (min-width: 900px) {
-        .contact-grid {
-          grid-template-columns: 1fr 1.1fr;
-          gap: 5vw;
-          align-items: start;
-        }
-      }
-
-      .contact-info {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-
-      .contact-detail {
-        padding-top: 1.25rem;
-        border-top: 1px solid var(--line);
-      }
-
-      .contact-detail dt {
-        font-size: 0.68rem;
-        font-weight: 500;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--muted);
-        margin-bottom: 0.35rem;
-      }
-
-      .contact-detail dd {
-        font-size: 1rem;
-        font-weight: 400;
-      }
-
-      .contact-detail a {
-        text-decoration: none;
-        transition: color 0.25s;
-      }
-
-      .contact-detail a:hover {
-        color: var(--accent);
-      }
-
-      .contact-form {
-        background: var(--surface);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        padding: clamp(1.5rem, 3vw, 2.5rem);
-      }
-
-      .form-grid {
-        display: grid;
-        gap: 1.25rem;
-      }
-
-      @media (min-width: 500px) {
-        .form-grid.two {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-
-      .field label {
-        display: block;
-        font-size: 0.68rem;
-        font-weight: 500;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--muted);
-        margin-bottom: 0.4rem;
-      }
-
-      .field input,
-      .field select,
-      .field textarea {
-        width: 100%;
-        font-family: inherit;
-        font-size: 0.95rem;
-        font-weight: 400;
-        color: var(--ink);
-        background: var(--bg);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        padding: 0.85rem 1rem;
-        outline: none;
-        transition: border-color 0.25s;
-      }
-
-      .field input:focus,
-      .field select:focus,
-      .field textarea:focus {
-        border-color: var(--accent);
-      }
-
-      .field textarea {
-        min-height: 120px;
-        resize: vertical;
-      }
-
-      .form-foot {
-        margin-top: 1.5rem;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 1rem 1.5rem;
-      }
-
-      .form-foot p {
-        font-size: 0.75rem;
-        color: var(--muted);
-        max-width: 16rem;
-        line-height: 1.5;
-      }
-
-      /* ——— FOOTER ——— */
-      footer {
-        border-top: 1px solid var(--line);
-        padding: 2.5rem clamp(1.25rem, 4vw, 3rem);
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-
-      @media (min-width: 768px) {
-        footer {
-          flex-direction: row;
-          align-items: center;
-          justify-content: space-between;
-        }
-      }
-
-      .footer-brand {
-        font-family: "Fraunces", Georgia, serif;
-        font-size: 1rem;
-      }
-
-      .footer-links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1.5rem;
-        list-style: none;
-      }
-
-      .footer-links a {
-        font-size: 0.75rem;
-        font-weight: 500;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        text-decoration: none;
-        color: var(--muted);
-        transition: color 0.25s;
-      }
-
-      .footer-links a:hover {
-        color: var(--ink);
-      }
-
-      .footer-copy {
-        font-size: 0.75rem;
-        color: var(--muted);
-      }
-
-      /* ——— REVEAL ——— */
-      .reveal {
-        opacity: 0;
-        transform: translateY(24px);
-        transition:
-          opacity 0.7s var(--ease),
-          transform 0.7s var(--ease);
-      }
-
-      .reveal.visible {
-        opacity: 1;
-        transform: none;
-      }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/site.css" />
   </head>
   <body>
-    <header class="site-header" id="header">
-      <a href="#" class="logo">Quality <strong>Granite &amp; Marble</strong></a>
-      <ul class="nav-desktop">
-        <li><a href="#about">About</a></li>
-        <li><a href="#materials">Materials</a></li>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#process">Process</a></li>
-      </ul>
-      <a href="#contact" class="nav-cta">Get a Quote</a>
-      <button
-        class="menu-toggle"
-        id="menuToggle"
-        aria-label="Open menu"
-        aria-expanded="false"
-      >
-        <span></span><span></span><span></span>
-      </button>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="cursor" id="cursor" aria-hidden="true"><span class="cursor-dot"></span><span class="cursor-ring"></span></div>
+
+    <div class="loader" id="loader">
+      <div class="loader-inner">
+        <span class="loader-brand">Quality</span>
+        <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+        <span class="loader-pct" id="loaderPct">0</span>
+      </div>
+    </div>
+
+    <header class="nav" id="nav">
+      <a href="#" class="nav-logo" data-magnetic>QG<span>M</span></a>
+      <nav class="nav-links">
+        <a href="#slabs" data-magnetic>Slabs</a>
+        <a href="#work" data-magnetic>Work</a>
+        <a href="#process" data-magnetic>Process</a>
+        <a href="#contact" class="nav-cta" data-magnetic>Enquire</a>
+      </nav>
+      <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span></button>
     </header>
 
-    <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
-      <a href="#about">About</a>
-      <a href="#materials">Materials</a>
+    <div class="drawer" id="drawer">
+      <a href="#slabs">Slabs</a>
       <a href="#work">Work</a>
       <a href="#process">Process</a>
-      <a href="#contact">Contact</a>
-      <a href="#contact" class="nav-cta-mobile">Get a Quote</a>
-    </nav>
+      <a href="#contact">Enquire</a>
+    </div>
 
     <main>
-      <section class="hero">
-        <div class="hero-content reveal">
-          <p class="eyebrow">Est. 1987 · Natural Stone Specialists</p>
-          <h1>Surfaces built to <em>last generations.</em></h1>
-          <p class="hero-lead">
-            We source, fabricate, and install premium marble, granite, and
-            travertine for homes and commercial spaces — with the care only
-            decades of craft can deliver.
-          </p>
-          <div class="hero-actions">
-            <a href="#materials" class="btn btn-primary">View Materials</a>
-            <a href="#process" class="btn btn-outline">How We Work</a>
+      <section class="hero" id="hero">
+        <canvas id="marbleCanvas" class="hero-canvas"></canvas>
+        <div class="hero-vignette"></div>
+        <div class="hero-ui">
+          <p class="hero-tag"><span class="line-draw">Est. 1987</span></p>
+          <h1 class="hero-title">
+            <span class="hero-line"><span class="char-wrap">Stone</span></span>
+            <span class="hero-line hero-line--accent"><span class="char-wrap" id="heroWord">carved</span></span>
+            <span class="hero-line"><span class="char-wrap">by time.</span></span>
+          </h1>
+          <p class="hero-sub">Premium marble, granite &amp; travertine — sourced, cut, and installed for spaces that endure.</p>
+          <div class="hero-cta">
+            <a href="#slabs" class="btn btn--light" data-magnetic>Explore slabs</a>
+            <a href="#process" class="btn btn--ghost" data-magnetic>Our process ↓</a>
           </div>
         </div>
-        <div class="hero-visual reveal">
-          <img
-            src="https://images.unsplash.com/photo-1615873964967-57fea266e101?w=900&q=80"
-            alt="Polished white marble surface with natural veining"
-            width="900"
-            height="1125"
-            loading="eager"
-          />
-          <div class="hero-badge">
-            <span>Projects completed</span>
-            <strong>2,400+</strong>
-          </div>
-        </div>
+        <div class="hero-scroll">Scroll to explore</div>
       </section>
 
-      <div class="stats-marquee" aria-hidden="true">
-        <div class="stats-track">
-          <div class="stat-item"><strong>35+</strong><span>Years of craft</span></div>
-          <div class="stat-item"><strong>2,400</strong><span>Projects delivered</span></div>
-          <div class="stat-item"><strong>18</strong><span>Quarry origins</span></div>
-          <div class="stat-item"><strong>100%</strong><span>Custom fabrication</span></div>
-          <div class="stat-item"><strong>35+</strong><span>Years of craft</span></div>
-          <div class="stat-item"><strong>2,400</strong><span>Projects delivered</span></div>
-          <div class="stat-item"><strong>18</strong><span>Quarry origins</span></div>
-          <div class="stat-item"><strong>100%</strong><span>Custom fabrication</span></div>
+      <div class="ticker">
+        <div class="ticker-track" id="ticker">
+          <span>35+ years</span><span>·</span><span>2,400 projects</span><span>·</span><span>18 quarry origins</span><span>·</span><span>100% custom fab</span><span>·</span>
+          <span>35+ years</span><span>·</span><span>2,400 projects</span><span>·</span><span>18 quarry origins</span><span>·</span><span>100% custom fab</span><span>·</span>
         </div>
       </div>
 
-      <section class="section wrap" id="about">
-        <div class="about-grid">
-          <div class="about-image reveal">
-            <img
-              src="https://images.unsplash.com/photo-1600607687644-c7171b4243f5?w=800&q=80"
-              alt="Modern kitchen with stone countertops"
-              width="800"
-              height="640"
-              loading="lazy"
-            />
-          </div>
-          <div class="about-text">
-            <div class="section-head reveal">
-              <p class="eyebrow">About us</p>
-              <h2>Where geology meets thoughtful design.</h2>
-            </div>
-            <div class="reveal">
-              <p>
-                Quality Granite and Marble was founded on a simple belief: the
-                world's finest natural stone deserves craftspeople who know it
-                inside out. Every slab in our yard is hand-selected from
-                quarries across Italy, Brazil, Turkey, and India.
-              </p>
-              <p>
-                From kitchen islands to hotel lobbies, we bring geological
-                beauty into the places where life happens — with precision
-                cutting, meticulous finishing, and installation built to endure.
-              </p>
-              <div class="pill-list">
-                <span class="pill">Countertops</span>
-                <span class="pill">Flooring</span>
-                <span class="pill">Cladding</span>
-                <span class="pill">Commercial</span>
-              </div>
-            </div>
-          </div>
+      <section class="manifesto" id="about">
+        <p class="manifesto-label">About</p>
+        <h2 class="manifesto-text split-target">
+          We don't sell stone.<br />We <em>release</em> what geology already perfected — slab by slab, cut by cut, for kitchens, lobbies, and landmarks built to outlast trends.
+        </h2>
+        <div class="manifesto-meta">
+          <div class="meta-block"><strong data-count="35">0</strong><span>Years</span></div>
+          <div class="meta-block"><strong data-count="2400">0</strong><span>Projects</span></div>
+          <div class="meta-block"><strong data-count="18">0</strong><span>Origins</span></div>
         </div>
       </section>
 
-      <section class="materials" id="materials">
-        <div class="wrap">
-          <div class="section-head reveal">
-            <p class="eyebrow">Our materials</p>
-            <h2>Three stones. Infinite possibilities.</h2>
-            <p>
-              Each material carries its own character. We help you choose the
-              right one for how you live and how the space performs.
-            </p>
+      <section class="slabs" id="slabs">
+        <div class="slabs-pin">
+          <div class="slabs-intro">
+            <p class="label">Materials</p>
+            <h2>Three stones.<br />One obsession.</h2>
+            <p class="slabs-hint">Scroll — the slab changes</p>
           </div>
-        </div>
-        <div class="material-cards">
-          <a href="#contact" class="material-card reveal">
-            <img
-              src="https://images.unsplash.com/photo-1615873964967-57fea266e101?w=600&q=80"
-              alt="Marble texture"
-              loading="lazy"
-            />
-            <div class="material-card-body">
-              <p class="num">01</p>
+          <div class="slabs-stage">
+            <div class="slab-panel is-active" data-slab="0" style="--slab-bg:#1a1816;--slab-accent:#e8dfd0">
+              <div class="slab-num">01</div>
               <h3>Marble</h3>
-              <p>
-                Calacatta, Statuario, Nero Marquina — metamorphic elegance from
-                Mediterranean quarries. Timeless in any application.
-              </p>
+              <p>Calacatta, Statuario, Nero Marquina — metamorphic elegance from Mediterranean quarries.</p>
+              <div class="slab-swatch" style="background:linear-gradient(135deg,#2a2826,#e8e0d8 40%,#1e1c1a)"></div>
             </div>
-          </a>
-          <a href="#contact" class="material-card reveal">
-            <img
-              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80"
-              alt="Granite kitchen surface"
-              loading="lazy"
-            />
-            <div class="material-card-body">
-              <p class="num">02</p>
+            <div class="slab-panel" data-slab="1" style="--slab-bg:#141210;--slab-accent:#c4a574">
+              <div class="slab-num">02</div>
               <h3>Granite</h3>
-              <p>
-                Igneous durability with crystalline depth. Ideal for
-                high-traffic surfaces — over 40 origins in stock.
-              </p>
+              <p>Igneous durability — Brazilian Blue to Kashmir White, over 40 origins in stock.</p>
+              <div class="slab-swatch" style="background:linear-gradient(135deg,#1a1614,#6b5a4a 35%,#2a2420)"></div>
             </div>
-          </a>
-          <a href="#contact" class="material-card reveal">
-            <img
-              src="https://images.unsplash.com/photo-1600566753190-17f0baa422a6?w=600&q=80"
-              alt="Travertine stone flooring"
-              loading="lazy"
-            />
-            <div class="material-card-body">
-              <p class="num">03</p>
+            <div class="slab-panel" data-slab="2" style="--slab-bg:#1c1916;--slab-accent:#d4c4a8">
+              <div class="slab-num">03</div>
               <h3>Travertine</h3>
-              <p>
-                Warm limestone formed over millennia. Perfect for floors,
-                facades, and outdoor spaces with Mediterranean character.
-              </p>
+              <p>Warm limestone — floors, facades, and outdoor spaces with ancient Mediterranean character.</p>
+              <div class="slab-swatch" style="background:linear-gradient(135deg,#2a241e,#c9b89a 45%,#1e1a16)"></div>
             </div>
-          </a>
-        </div>
-      </section>
-
-      <section class="section wrap" id="work">
-        <div class="section-head center reveal">
-          <p class="eyebrow">Applications</p>
-          <h2>Stone for every room and scale.</h2>
-          <p>
-            Residential or commercial, intimate or grand — we tailor fabrication
-            and installation to your project.
-          </p>
-        </div>
-        <div class="apps-grid">
-          <article class="app-card reveal">
-            <svg class="app-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <rect x="3" y="3" width="18" height="18" rx="1"/>
-              <path d="M3 9h18M9 21V9"/>
-            </svg>
-            <h3>Kitchens</h3>
-            <p>Countertops, islands, and backsplashes cut to your exact layout.</p>
-          </article>
-          <article class="app-card reveal">
-            <svg class="app-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <path d="M4 12h16M12 4v16"/>
-              <circle cx="12" cy="12" r="9"/>
-            </svg>
-            <h3>Bathrooms</h3>
-            <p>Vanities, shower surrounds, and wet-area surfaces that resist moisture.</p>
-          </article>
-          <article class="app-card reveal">
-            <svg class="app-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <path d="M3 21h18M5 21V7l7-4 7 4v14"/>
-            </svg>
-            <h3>Commercial</h3>
-            <p>Lobbies, reception desks, and feature walls for lasting first impressions.</p>
-          </article>
-          <article class="app-card reveal">
-            <svg class="app-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <path d="M4 20L12 4l8 16H4z"/>
-            </svg>
-            <h3>Exterior</h3>
-            <p>Cladding, paving, and outdoor living surfaces built for the elements.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section wrap" id="process">
-        <div class="section-head reveal">
-          <p class="eyebrow">How we work</p>
-          <h2>Precision at every stage.</h2>
-          <p>
-            From first visit to final polish, our process is transparent and
-            focused entirely on the result you have in mind.
-          </p>
-        </div>
-        <div class="process-list">
-          <article class="process-item reveal">
-            <span class="process-num">01</span>
-            <h3>Consultation</h3>
-            <p>
-              We visit your site, understand your vision, and walk you through
-              our inventory — in person or virtually.
-            </p>
-          </article>
-          <article class="process-item reveal">
-            <span class="process-num">02</span>
-            <h3>Slab selection</h3>
-            <p>
-              You choose your exact slab. No surprises — what you approve is
-              precisely what we install.
-            </p>
-          </article>
-          <article class="process-item reveal">
-            <span class="process-num">03</span>
-            <h3>Fabrication</h3>
-            <p>
-              CNC waterjet cutting paired with hand-finishing. Edge profiles,
-              inlays, and custom cuts — all in-house.
-            </p>
-          </article>
-          <article class="process-item reveal">
-            <span class="process-num">04</span>
-            <h3>Installation</h3>
-            <p>
-              Our teams install with care, seal the stone, and leave your space
-              clean and ready to enjoy for decades.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <div class="quote-block reveal">
-        <blockquote>
-          "Stone is the one material that carries time within it — we simply
-          reveal what was always there."
-        </blockquote>
-        <cite>— Marco Pellini, Founder</cite>
-      </div>
-
-      <section class="section wrap" id="contact">
-        <div class="contact-grid">
-          <div>
-            <div class="section-head reveal">
-              <p class="eyebrow">Get in touch</p>
-              <h2>Start your project.</h2>
-              <p>
-                Whether it's a single countertop or an entire building, tell us
-                about your vision. We typically respond within one business day.
-              </p>
-            </div>
-            <dl class="contact-info reveal">
-              <div class="contact-detail">
-                <dt>Phone</dt>
-                <dd><a href="tel:+15551234567">(555) 123-4567</a></dd>
-              </div>
-              <div class="contact-detail">
-                <dt>Email</dt>
-                <dd>
-                  <a href="mailto:hello@qualitymarble.com"
-                    >hello@qualitymarble.com</a
-                  >
-                </dd>
-              </div>
-              <div class="contact-detail">
-                <dt>Showroom</dt>
-                <dd>Mon–Fri 8am–5pm · Sat by appointment</dd>
-              </div>
-            </dl>
+            <div class="slabs-progress"><div class="slabs-progress-fill" id="slabProgress"></div></div>
           </div>
-          <form class="contact-form reveal" action="#" method="post">
-            <div class="form-grid two">
-              <div class="field">
-                <label for="fname">First name</label>
-                <input type="text" id="fname" name="fname" required />
-              </div>
-              <div class="field">
-                <label for="lname">Last name</label>
-                <input type="text" id="lname" name="lname" required />
-              </div>
-            </div>
-            <div class="form-grid">
-              <div class="field">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required />
-              </div>
-              <div class="field">
-                <label for="ptype">Project type</label>
-                <select id="ptype" name="ptype">
-                  <option value="">Select a category</option>
-                  <option>Residential kitchen</option>
-                  <option>Residential bathroom</option>
-                  <option>Commercial lobby</option>
-                  <option>Flooring</option>
-                  <option>Cladding / facade</option>
-                  <option>Custom / other</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="message">Tell us about your project</label>
-                <textarea id="message" name="message" rows="4"></textarea>
-              </div>
-            </div>
-            <div class="form-foot">
-              <button type="submit" class="btn btn-primary">
-                Send enquiry
-              </button>
-              <p>
-                Your information stays private and is never shared with third
-                parties.
-              </p>
-            </div>
-          </form>
         </div>
+      </section>
+
+      <section class="gallery-wrap" id="work">
+        <div class="gallery-head">
+          <p class="label">Selected work</p>
+          <h2>Spaces we've shaped</h2>
+        </div>
+        <div class="gallery-pin">
+          <div class="gallery-track" id="galleryTrack">
+            <article class="gallery-card"><img src="https://images.unsplash.com/photo-1600607687644-c7171b4243f5?w=700&q=80" alt="Kitchen" loading="lazy" /><div class="gallery-cap"><span>01</span><h3>Kitchen island</h3><p>Calacatta · Residential</p></div></article>
+            <article class="gallery-card"><img src="https://images.unsplash.com/photo-1600566753190-17f0baa422a6?w=700&q=80" alt="Bathroom" loading="lazy" /><div class="gallery-cap"><span>02</span><h3>Spa bathroom</h3><p>Travertine · Residential</p></div></article>
+            <article class="gallery-card"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=80" alt="Living" loading="lazy" /><div class="gallery-cap"><span>03</span><h3>Living feature</h3><p>Granite · Residential</p></div></article>
+            <article class="gallery-card"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=80" alt="Lobby" loading="lazy" /><div class="gallery-cap"><span>04</span><h3>Hotel lobby</h3><p>Marble · Commercial</p></div></article>
+            <article class="gallery-card"><img src="https://images.unsplash.com/photo-1615873964967-57fea266e101?w=700&q=80" alt="Marble" loading="lazy" /><div class="gallery-cap"><span>05</span><h3>Reception desk</h3><p>Nero Marquina · Commercial</p></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="process" id="process">
+        <p class="label">How we work</p>
+        <div class="process-track" id="processTrack">
+          <article class="process-card"><span>01</span><h3>Consult</h3><p>Site visit, vision, and inventory walk-through — in person or virtual.</p></article>
+          <article class="process-card"><span>02</span><h3>Select</h3><p>Choose your exact slab. What you approve is what we install.</p></article>
+          <article class="process-card"><span>03</span><h3>Fabricate</h3><p>CNC waterjet plus hand-finishing. Edges, inlays, custom cuts in-house.</p></article>
+          <article class="process-card"><span>04</span><h3>Install</h3><p>Precision install, seal, and a spotless handover built to last decades.</p></article>
+        </div>
+      </section>
+
+      <section class="quote">
+        <blockquote>"Stone carries time within it — we simply reveal what was always there."</blockquote>
+        <cite>Marco Pellini, Founder</cite>
+      </section>
+
+      <section class="contact" id="contact">
+        <div class="contact-left">
+          <p class="label">Enquire</p>
+          <h2>Start your<br />project.</h2>
+          <p>Tell us your vision. We respond within one business day.</p>
+          <a href="tel:+15551234567" class="contact-link">(555) 123-4567</a>
+          <a href="mailto:hello@qualitymarble.com" class="contact-link">hello@qualitymarble.com</a>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <div class="form-row"><input type="text" placeholder="First name" required /><input type="text" placeholder="Last name" required /></div>
+          <input type="email" placeholder="Email" required />
+          <select><option value="">Project type</option><option>Kitchen</option><option>Bathroom</option><option>Commercial</option><option>Other</option></select>
+          <textarea placeholder="Tell us about your project" rows="4"></textarea>
+          <button type="submit" class="btn btn--light" data-magnetic>Send enquiry</button>
+        </form>
       </section>
     </main>
 
     <footer>
-      <div class="footer-brand">Quality Granite &amp; Marble</div>
-      <ul class="footer-links">
-        <li><a href="#">Privacy</a></li>
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">Houzz</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <p class="footer-copy">© 2025 Quality Granite and Marble. All rights reserved.</p>
+      <span>Quality Granite &amp; Marble</span>
+      <span>© 2025</span>
     </footer>
 
-    <script>
-      const header = document.getElementById("header");
-      const menuToggle = document.getElementById("menuToggle");
-      const mobileMenu = document.getElementById("mobileMenu");
-
-      window.addEventListener(
-        "scroll",
-        () => header.classList.toggle("scrolled", window.scrollY > 40),
-        { passive: true },
-      );
-
-      function closeMenu() {
-        menuToggle.classList.remove("open");
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.setAttribute("aria-label", "Open menu");
-        mobileMenu.classList.remove("open");
-        mobileMenu.setAttribute("aria-hidden", "true");
-        document.body.style.overflow = "";
-      }
-
-      menuToggle.addEventListener("click", () => {
-        const open = menuToggle.classList.toggle("open");
-        menuToggle.setAttribute("aria-expanded", String(open));
-        menuToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-        mobileMenu.classList.toggle("open", open);
-        mobileMenu.setAttribute("aria-hidden", String(!open));
-        document.body.style.overflow = open ? "hidden" : "";
-      });
-
-      mobileMenu.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", closeMenu);
-      });
-
-      const reveals = document.querySelectorAll(".reveal");
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
-      );
-      reveals.forEach((el) => observer.observe(el));
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>

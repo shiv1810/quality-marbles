@@ -8,7 +8,7 @@ Static marketing site for Quality Granite and Marble — natural stone fabricati
 python3 -m http.server 3000
 ```
 
-Open http://localhost:3000
+Open http://localhost:3000 (serves `index.html`, `css/`, and `js/`).
 
 ## Deploy to Cloudflare Pages
 
