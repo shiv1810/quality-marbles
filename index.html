@@ -3,171 +3,257 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Quality Granite and Marble — stone fabrication since 1987." />
+    <meta name="description" content="Quality Granite and Marble — custom stone countertops and installation since 1987." />
     <title>Quality Granite and Marble</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/site.css" />
   </head>
   <body>
-    <div class="grain" aria-hidden="true"></div>
-    <div class="cursor" id="cursor" aria-hidden="true"><span class="cursor-dot"></span><span class="cursor-ring"></span></div>
-
-    <div class="loader" id="loader">
-      <div class="loader-inner">
-        <span class="loader-brand">Quality</span>
-        <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
-        <span class="loader-pct" id="loaderPct">0</span>
-      </div>
-    </div>
-
-    <header class="nav" id="nav">
-      <a href="#" class="nav-logo" data-magnetic>QG<span>M</span></a>
-      <nav class="nav-links">
-        <a href="#slabs" data-magnetic>Slabs</a>
-        <a href="#work" data-magnetic>Work</a>
-        <a href="#process" data-magnetic>Process</a>
-        <a href="#contact" class="nav-cta" data-magnetic>Enquire</a>
+    <header class="header" id="header">
+      <a href="#" class="logo">Quality Granite &amp; Marble</a>
+      <nav class="nav" aria-label="Main">
+        <a href="#about">About</a>
+        <a href="#materials">Materials</a>
+        <a href="#work">Work</a>
+        <a href="#process">Process</a>
+        <a href="#contact" class="nav-cta">Contact</a>
       </nav>
-      <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span></button>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
     </header>
 
-    <div class="drawer" id="drawer">
-      <a href="#slabs">Slabs</a>
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <a href="#about">About</a>
+      <a href="#materials">Materials</a>
       <a href="#work">Work</a>
       <a href="#process">Process</a>
-      <a href="#contact">Enquire</a>
+      <a href="#contact">Contact</a>
     </div>
 
     <main>
-      <section class="hero" id="hero">
-        <canvas id="marbleCanvas" class="hero-canvas"></canvas>
-        <div class="hero-vignette"></div>
-        <div class="hero-ui">
-          <p class="hero-tag"><span class="line-draw">Est. 1987</span></p>
-          <h1 class="hero-title">
-            <span class="hero-line"><span class="char-wrap">Stone</span></span>
-            <span class="hero-line hero-line--accent"><span class="char-wrap" id="heroWord">carved</span></span>
-            <span class="hero-line"><span class="char-wrap">by time.</span></span>
-          </h1>
-          <p class="hero-sub">Premium marble, granite &amp; travertine — sourced, cut, and installed for spaces that endure.</p>
-          <div class="hero-cta">
-            <a href="#slabs" class="btn btn--light" data-magnetic>Explore slabs</a>
-            <a href="#process" class="btn btn--ghost" data-magnetic>Our process ↓</a>
+      <section class="hero">
+        <div class="hero-media">
+          <img
+            src="https://images.unsplash.com/photo-1615873964967-57fea266e101?w=1600&q=85"
+            alt="Polished marble slab with natural veining"
+            width="1600"
+            height="1000"
+          />
+        </div>
+        <div class="hero-content wrap">
+          <p class="eyebrow">Est. 1987 · Natural Stone Specialists</p>
+          <h1>Fine marble, granite &amp; travertine for your home and business</h1>
+          <p class="lead">
+            We source, fabricate, and install stone surfaces across residential and commercial projects — with over three decades of craft behind every cut.
+          </p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">Request a quote</a>
+            <a href="#materials" class="btn btn-secondary">View materials</a>
           </div>
-        </div>
-        <div class="hero-scroll">Scroll to explore</div>
-      </section>
-
-      <div class="ticker">
-        <div class="ticker-track" id="ticker">
-          <span>35+ years</span><span>·</span><span>2,400 projects</span><span>·</span><span>18 quarry origins</span><span>·</span><span>100% custom fab</span><span>·</span>
-          <span>35+ years</span><span>·</span><span>2,400 projects</span><span>·</span><span>18 quarry origins</span><span>·</span><span>100% custom fab</span><span>·</span>
-        </div>
-      </div>
-
-      <section class="manifesto" id="about">
-        <p class="manifesto-label">About</p>
-        <h2 class="manifesto-text split-target">
-          We don't sell stone.<br />We <em>release</em> what geology already perfected — slab by slab, cut by cut, for kitchens, lobbies, and landmarks built to outlast trends.
-        </h2>
-        <div class="manifesto-meta">
-          <div class="meta-block"><strong data-count="35">0</strong><span>Years</span></div>
-          <div class="meta-block"><strong data-count="2400">0</strong><span>Projects</span></div>
-          <div class="meta-block"><strong data-count="18">0</strong><span>Origins</span></div>
         </div>
       </section>
 
-      <section class="slabs" id="slabs">
-        <div class="slabs-pin">
-          <div class="slabs-intro">
-            <p class="label">Materials</p>
-            <h2>Three stones.<br />One obsession.</h2>
-            <p class="slabs-hint">Scroll — the slab changes</p>
+      <section class="stats wrap">
+        <div class="stat"><span class="stat-num">35+</span><span class="stat-label">Years in business</span></div>
+        <div class="stat"><span class="stat-num">2,400</span><span class="stat-label">Projects completed</span></div>
+        <div class="stat"><span class="stat-num">18</span><span class="stat-label">Quarry origins</span></div>
+        <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Custom fabrication</span></div>
+      </section>
+
+      <section class="section wrap" id="about">
+        <div class="split">
+          <div class="split-media fade-in">
+            <img
+              src="https://images.unsplash.com/photo-1600607687644-c7171b4243f5?w=900&q=85"
+              alt="Kitchen with stone countertops"
+              width="900"
+              height="720"
+              loading="lazy"
+            />
           </div>
-          <div class="slabs-stage">
-            <div class="slab-panel is-active" data-slab="0" style="--slab-bg:#1a1816;--slab-accent:#e8dfd0">
-              <div class="slab-num">01</div>
-              <h3>Marble</h3>
-              <p>Calacatta, Statuario, Nero Marquina — metamorphic elegance from Mediterranean quarries.</p>
-              <div class="slab-swatch" style="background:linear-gradient(135deg,#2a2826,#e8e0d8 40%,#1e1c1a)"></div>
+          <div class="split-text fade-in">
+            <p class="eyebrow">About us</p>
+            <h2>Craftsmanship you can see in every edge</h2>
+            <p>
+              Quality Granite and Marble has served homeowners, builders, and designers since 1987. Every slab in our yard is selected for quality and character, then cut and finished in-house to your exact specifications.
+            </p>
+            <p>
+              Whether you need a kitchen countertop, bathroom vanity, commercial lobby, or exterior cladding, our team guides you from slab selection through installation.
+            </p>
+            <ul class="services-list">
+              <li>Countertops &amp; islands</li>
+              <li>Bathroom vanities</li>
+              <li>Flooring &amp; cladding</li>
+              <li>Commercial interiors</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--stone" id="materials">
+        <div class="wrap">
+          <header class="section-header fade-in">
+            <p class="eyebrow">Materials</p>
+            <h2>Marble, granite &amp; travertine</h2>
+            <p class="section-intro">We stock a wide range of colours and finishes. Visit our showroom to view full slabs in person.</p>
+          </header>
+          <div class="materials-grid">
+            <article class="material fade-in">
+              <img src="https://images.unsplash.com/photo-1615873964967-57fea266e101?w=600&q=85" alt="White marble" loading="lazy" />
+              <div class="material-body">
+                <h3>Marble</h3>
+                <p>Calacatta, Statuario, Carrara, Nero Marquina and more — ideal for kitchens, bathrooms, and feature walls.</p>
+              </div>
+            </article>
+            <article class="material fade-in">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=85" alt="Granite surface" loading="lazy" />
+              <div class="material-body">
+                <h3>Granite</h3>
+                <p>Durable, heat-resistant surfaces for busy kitchens and high-traffic commercial spaces. Dozens of colours available.</p>
+              </div>
+            </article>
+            <article class="material fade-in">
+              <img src="https://images.unsplash.com/photo-1600566753190-17f0baa422a6?w=600&q=85" alt="Travertine tile" loading="lazy" />
+              <div class="material-body">
+                <h3>Travertine</h3>
+                <p>Warm, textured limestone for flooring, patios, and facades — a classic choice for indoor-outdoor living.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section wrap" id="work">
+        <header class="section-header fade-in">
+          <p class="eyebrow">Our work</p>
+          <h2>Recent projects</h2>
+          <p class="section-intro">A selection of residential and commercial installations from our workshop.</p>
+        </header>
+        <div class="work-grid">
+          <figure class="work-item fade-in">
+            <img src="https://images.unsplash.com/photo-1600607687644-c7171b4243f5?w=700&q=85" alt="Kitchen island" loading="lazy" />
+            <figcaption>Kitchen island · Calacatta marble</figcaption>
+          </figure>
+          <figure class="work-item fade-in">
+            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa422a6?w=700&q=85" alt="Bathroom stone" loading="lazy" />
+            <figcaption>Master bathroom · Travertine</figcaption>
+          </figure>
+          <figure class="work-item fade-in">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=85" alt="Office lobby" loading="lazy" />
+            <figcaption>Office lobby · Polished marble</figcaption>
+          </figure>
+          <figure class="work-item fade-in">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=85" alt="Living area" loading="lazy" />
+            <figcaption>Fireplace surround · Granite</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section wrap" id="process">
+        <header class="section-header fade-in">
+          <p class="eyebrow">Our process</p>
+          <h2>From consultation to installation</h2>
+        </header>
+        <ol class="process-list">
+          <li class="fade-in">
+            <span class="step-num">1</span>
+            <div>
+              <h3>Consultation</h3>
+              <p>We discuss your project, take measurements, and review options in our showroom or at your site.</p>
             </div>
-            <div class="slab-panel" data-slab="1" style="--slab-bg:#141210;--slab-accent:#c4a574">
-              <div class="slab-num">02</div>
-              <h3>Granite</h3>
-              <p>Igneous durability — Brazilian Blue to Kashmir White, over 40 origins in stock.</p>
-              <div class="slab-swatch" style="background:linear-gradient(135deg,#1a1614,#6b5a4a 35%,#2a2420)"></div>
+          </li>
+          <li class="fade-in">
+            <span class="step-num">2</span>
+            <div>
+              <h3>Slab selection</h3>
+              <p>You choose the exact slab from our inventory — what you approve is what we fabricate.</p>
             </div>
-            <div class="slab-panel" data-slab="2" style="--slab-bg:#1c1916;--slab-accent:#d4c4a8">
-              <div class="slab-num">03</div>
-              <h3>Travertine</h3>
-              <p>Warm limestone — floors, facades, and outdoor spaces with ancient Mediterranean character.</p>
-              <div class="slab-swatch" style="background:linear-gradient(135deg,#2a241e,#c9b89a 45%,#1e1a16)"></div>
+          </li>
+          <li class="fade-in">
+            <span class="step-num">3</span>
+            <div>
+              <h3>Fabrication</h3>
+              <p>Precision cutting, edge profiling, and finishing carried out in our workshop.</p>
             </div>
-            <div class="slabs-progress"><div class="slabs-progress-fill" id="slabProgress"></div></div>
-          </div>
-        </div>
+          </li>
+          <li class="fade-in">
+            <span class="step-num">4</span>
+            <div>
+              <h3>Installation</h3>
+              <p>Professional fitting, sealing, and a clean handover — ready for daily use.</p>
+            </div>
+          </li>
+        </ol>
       </section>
 
-      <section class="gallery-wrap" id="work">
-        <div class="gallery-head">
-          <p class="label">Selected work</p>
-          <h2>Spaces we've shaped</h2>
-        </div>
-        <div class="gallery-pin">
-          <div class="gallery-track" id="galleryTrack">
-            <article class="gallery-card"><img src="https://images.unsplash.com/photo-1600607687644-c7171b4243f5?w=700&q=80" alt="Kitchen" loading="lazy" /><div class="gallery-cap"><span>01</span><h3>Kitchen island</h3><p>Calacatta · Residential</p></div></article>
-            <article class="gallery-card"><img src="https://images.unsplash.com/photo-1600566753190-17f0baa422a6?w=700&q=80" alt="Bathroom" loading="lazy" /><div class="gallery-cap"><span>02</span><h3>Spa bathroom</h3><p>Travertine · Residential</p></div></article>
-            <article class="gallery-card"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=80" alt="Living" loading="lazy" /><div class="gallery-cap"><span>03</span><h3>Living feature</h3><p>Granite · Residential</p></div></article>
-            <article class="gallery-card"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=80" alt="Lobby" loading="lazy" /><div class="gallery-cap"><span>04</span><h3>Hotel lobby</h3><p>Marble · Commercial</p></div></article>
-            <article class="gallery-card"><img src="https://images.unsplash.com/photo-1615873964967-57fea266e101?w=700&q=80" alt="Marble" loading="lazy" /><div class="gallery-cap"><span>05</span><h3>Reception desk</h3><p>Nero Marquina · Commercial</p></div></article>
-          </div>
-        </div>
-      </section>
-
-      <section class="process" id="process">
-        <p class="label">How we work</p>
-        <div class="process-track" id="processTrack">
-          <article class="process-card"><span>01</span><h3>Consult</h3><p>Site visit, vision, and inventory walk-through — in person or virtual.</p></article>
-          <article class="process-card"><span>02</span><h3>Select</h3><p>Choose your exact slab. What you approve is what we install.</p></article>
-          <article class="process-card"><span>03</span><h3>Fabricate</h3><p>CNC waterjet plus hand-finishing. Edges, inlays, custom cuts in-house.</p></article>
-          <article class="process-card"><span>04</span><h3>Install</h3><p>Precision install, seal, and a spotless handover built to last decades.</p></article>
-        </div>
-      </section>
-
-      <section class="quote">
-        <blockquote>"Stone carries time within it — we simply reveal what was always there."</blockquote>
+      <section class="quote wrap fade-in">
+        <blockquote>
+          Stone is the one material that carries time within it — we simply reveal what was always there.
+        </blockquote>
         <cite>Marco Pellini, Founder</cite>
       </section>
 
-      <section class="contact" id="contact">
-        <div class="contact-left">
-          <p class="label">Enquire</p>
-          <h2>Start your<br />project.</h2>
-          <p>Tell us your vision. We respond within one business day.</p>
-          <a href="tel:+15551234567" class="contact-link">(555) 123-4567</a>
-          <a href="mailto:hello@qualitymarble.com" class="contact-link">hello@qualitymarble.com</a>
+      <section class="section wrap" id="contact">
+        <div class="contact-grid">
+          <div class="fade-in">
+            <p class="eyebrow">Contact</p>
+            <h2>Discuss your project</h2>
+            <p class="section-intro">Call, email, or send the form below. We aim to respond within one business day.</p>
+            <div class="contact-details">
+              <p><strong>Phone</strong><br /><a href="tel:+15551234567">(555) 123-4567</a></p>
+              <p><strong>Email</strong><br /><a href="mailto:hello@qualitymarble.com">hello@qualitymarble.com</a></p>
+              <p><strong>Showroom hours</strong><br />Mon–Fri 8:00am–5:00pm<br />Saturday by appointment</p>
+            </div>
+          </div>
+          <form class="contact-form fade-in" id="contactForm">
+            <div class="form-row">
+              <label class="field">
+                <span>First name</span>
+                <input type="text" name="fname" required />
+              </label>
+              <label class="field">
+                <span>Last name</span>
+                <input type="text" name="lname" required />
+              </label>
+            </div>
+            <label class="field">
+              <span>Email</span>
+              <input type="email" name="email" required />
+            </label>
+            <label class="field">
+              <span>Project type</span>
+              <select name="type">
+                <option value="">Please select</option>
+                <option>Kitchen countertop</option>
+                <option>Bathroom</option>
+                <option>Commercial</option>
+                <option>Flooring / cladding</option>
+                <option>Other</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Message</span>
+              <textarea name="message" rows="4" placeholder="Tell us about your project"></textarea>
+            </label>
+            <button type="submit" class="btn btn-primary">Send enquiry</button>
+          </form>
         </div>
-        <form class="contact-form" id="contactForm">
-          <div class="form-row"><input type="text" placeholder="First name" required /><input type="text" placeholder="Last name" required /></div>
-          <input type="email" placeholder="Email" required />
-          <select><option value="">Project type</option><option>Kitchen</option><option>Bathroom</option><option>Commercial</option><option>Other</option></select>
-          <textarea placeholder="Tell us about your project" rows="4"></textarea>
-          <button type="submit" class="btn btn--light" data-magnetic>Send enquiry</button>
-        </form>
       </section>
     </main>
 
-    <footer>
-      <span>Quality Granite &amp; Marble</span>
-      <span>© 2025</span>
+    <footer class="footer wrap">
+      <p class="footer-brand">Quality Granite &amp; Marble</p>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#">Privacy</a>
+        <a href="#">Instagram</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <p class="footer-copy">© 2025 Quality Granite and Marble</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
