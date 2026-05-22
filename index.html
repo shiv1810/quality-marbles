@@ -8,17 +8,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="css/site.css" />
+    <style>
+      body { margin: 0; font-family: Georgia, serif; background: #f7f5f1; color: #2a2826; }
+    </style>
+    <link rel="stylesheet" href="site.css" />
   </head>
   <body>
-    <header class="header" id="header">
-      <a href="#" class="logo">Quality Granite &amp; Marble</a>
+    <header class="header header--light" id="header">
+      <a href="index.html" class="logo">Quality Granite &amp; Marble</a>
       <nav class="nav" aria-label="Main">
-        <a href="#about">About</a>
-        <a href="#materials">Materials</a>
-        <a href="#work">Work</a>
-        <a href="#process">Process</a>
-        <a href="#contact" class="nav-cta">Contact</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#materials">Materials</a>
+        <a href="index.html#work">Work</a>
+        <a href="index.html#process">Process</a>
+        <a href="contact.html" class="nav-cta">Contact</a>
       </nav>
       <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span>
@@ -26,23 +29,16 @@
     </header>
 
     <div class="mobile-nav" id="mobileNav" hidden>
-      <a href="#about">About</a>
-      <a href="#materials">Materials</a>
-      <a href="#work">Work</a>
-      <a href="#process">Process</a>
-      <a href="#contact">Contact</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#materials">Materials</a>
+      <a href="index.html#work">Work</a>
+      <a href="index.html#process">Process</a>
+      <a href="contact.html">Contact</a>
     </div>
 
     <main>
       <section class="hero">
-        <div class="hero-media">
-          <img
-            src="https://images.unsplash.com/photo-1615873964967-57fea266e101?w=1600&q=85"
-            alt="Polished marble slab with natural veining"
-            width="1600"
-            height="1000"
-          />
-        </div>
+        <div class="hero-media" role="img" aria-label="Polished marble slab with natural veining"></div>
         <div class="hero-content wrap">
           <p class="eyebrow">Est. 1987 · Natural Stone Specialists</p>
           <h1>Fine marble, granite &amp; travertine for your home and business</h1>
@@ -50,7 +46,7 @@
             We source, fabricate, and install stone surfaces across residential and commercial projects — with over three decades of craft behind every cut.
           </p>
           <div class="hero-actions">
-            <a href="#contact" class="btn btn-primary">Request a quote</a>
+            <a href="contact.html" class="btn btn-primary">Contact us</a>
             <a href="#materials" class="btn btn-secondary">View materials</a>
           </div>
         </div>
@@ -65,16 +61,10 @@
 
       <section class="section wrap" id="about">
         <div class="split">
-          <div class="split-media fade-in">
-            <img
-              src="https://images.unsplash.com/photo-1600607687644-c7171b4243f5?w=900&q=85"
-              alt="Kitchen with stone countertops"
-              width="900"
-              height="720"
-              loading="lazy"
-            />
+          <div class="split-media">
+            <img class="img-cover" src="https://images.unsplash.com/photo-1600607687644-c7171b4243f5?w=900&q=80&auto=format" alt="Kitchen with stone countertops" width="900" height="720" loading="lazy" />
           </div>
-          <div class="split-text fade-in">
+          <div class="split-text">
             <p class="eyebrow">About us</p>
             <h2>Craftsmanship you can see in every edge</h2>
             <p>
@@ -95,31 +85,31 @@
 
       <section class="section section--stone" id="materials">
         <div class="wrap">
-          <header class="section-header fade-in">
+          <header class="section-header">
             <p class="eyebrow">Materials</p>
             <h2>Marble, granite &amp; travertine</h2>
             <p class="section-intro">We stock a wide range of colours and finishes. Visit our showroom to view full slabs in person.</p>
           </header>
           <div class="materials-grid">
-            <article class="material fade-in">
-              <img src="https://images.unsplash.com/photo-1615873964967-57fea266e101?w=600&q=85" alt="White marble" loading="lazy" />
+            <article class="material">
+              <img class="img-cover" src="https://images.unsplash.com/photo-1615873964967-57fea266e101?w=600&q=85&auto=format" alt="White marble" loading="lazy" />
               <div class="material-body">
                 <h3>Marble</h3>
                 <p>Calacatta, Statuario, Carrara, Nero Marquina and more — ideal for kitchens, bathrooms, and feature walls.</p>
               </div>
             </article>
-            <article class="material fade-in">
-              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=85" alt="Granite surface" loading="lazy" />
+            <article class="material">
+              <img class="img-cover" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=85&auto=format" alt="Granite surface" loading="lazy" />
               <div class="material-body">
                 <h3>Granite</h3>
-                <p>Durable, heat-resistant surfaces for busy kitchens and high-traffic commercial spaces. Dozens of colours available.</p>
+                <p>Durable, heat-resistant surfaces for busy kitchens and high-traffic commercial spaces.</p>
               </div>
             </article>
-            <article class="material fade-in">
-              <img src="https://images.unsplash.com/photo-1600566753190-17f0baa422a6?w=600&q=85" alt="Travertine tile" loading="lazy" />
+            <article class="material">
+              <img class="img-cover" src="https://images.unsplash.com/photo-1600566753190-17f0baa422a6?w=600&q=85&auto=format" alt="Travertine tile" loading="lazy" />
               <div class="material-body">
                 <h3>Travertine</h3>
-                <p>Warm, textured limestone for flooring, patios, and facades — a classic choice for indoor-outdoor living.</p>
+                <p>Warm limestone for flooring, patios, and facades — a classic choice for indoor-outdoor living.</p>
               </div>
             </article>
           </div>
@@ -127,59 +117,59 @@
       </section>
 
       <section class="section wrap" id="work">
-        <header class="section-header fade-in">
+        <header class="section-header">
           <p class="eyebrow">Our work</p>
           <h2>Recent projects</h2>
           <p class="section-intro">A selection of residential and commercial installations from our workshop.</p>
         </header>
         <div class="work-grid">
-          <figure class="work-item fade-in">
-            <img src="https://images.unsplash.com/photo-1600607687644-c7171b4243f5?w=700&q=85" alt="Kitchen island" loading="lazy" />
+          <figure class="work-item">
+            <img class="img-cover" src="https://images.unsplash.com/photo-1600607687644-c7171b4243f5?w=700&q=85&auto=format" alt="Kitchen island" loading="lazy" />
             <figcaption>Kitchen island · Calacatta marble</figcaption>
           </figure>
-          <figure class="work-item fade-in">
-            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa422a6?w=700&q=85" alt="Bathroom stone" loading="lazy" />
+          <figure class="work-item">
+            <img class="img-cover" src="https://images.unsplash.com/photo-1600566753190-17f0baa422a6?w=700&q=85&auto=format" alt="Bathroom stone" loading="lazy" />
             <figcaption>Master bathroom · Travertine</figcaption>
           </figure>
-          <figure class="work-item fade-in">
-            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=85" alt="Office lobby" loading="lazy" />
+          <figure class="work-item">
+            <img class="img-cover" src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=85&auto=format" alt="Office lobby" loading="lazy" />
             <figcaption>Office lobby · Polished marble</figcaption>
           </figure>
-          <figure class="work-item fade-in">
-            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=85" alt="Living area" loading="lazy" />
+          <figure class="work-item">
+            <img class="img-cover" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=85&auto=format" alt="Living area" loading="lazy" />
             <figcaption>Fireplace surround · Granite</figcaption>
           </figure>
         </div>
       </section>
 
       <section class="section wrap" id="process">
-        <header class="section-header fade-in">
+        <header class="section-header">
           <p class="eyebrow">Our process</p>
           <h2>From consultation to installation</h2>
         </header>
         <ol class="process-list">
-          <li class="fade-in">
+          <li>
             <span class="step-num">1</span>
             <div>
               <h3>Consultation</h3>
               <p>We discuss your project, take measurements, and review options in our showroom or at your site.</p>
             </div>
           </li>
-          <li class="fade-in">
+          <li>
             <span class="step-num">2</span>
             <div>
               <h3>Slab selection</h3>
               <p>You choose the exact slab from our inventory — what you approve is what we fabricate.</p>
             </div>
           </li>
-          <li class="fade-in">
+          <li>
             <span class="step-num">3</span>
             <div>
               <h3>Fabrication</h3>
               <p>Precision cutting, edge profiling, and finishing carried out in our workshop.</p>
             </div>
           </li>
-          <li class="fade-in">
+          <li>
             <span class="step-num">4</span>
             <div>
               <h3>Installation</h3>
@@ -189,67 +179,25 @@
         </ol>
       </section>
 
-      <section class="quote wrap fade-in">
+      <section class="quote wrap">
         <blockquote>
           Stone is the one material that carries time within it — we simply reveal what was always there.
         </blockquote>
         <cite>Marco Pellini, Founder</cite>
       </section>
 
-      <section class="section wrap" id="contact">
-        <div class="contact-grid">
-          <div class="fade-in">
-            <p class="eyebrow">Contact</p>
-            <h2>Discuss your project</h2>
-            <p class="section-intro">Call, email, or send the form below. We aim to respond within one business day.</p>
-            <div class="contact-details">
-              <p><strong>Phone</strong><br /><a href="tel:+15551234567">(555) 123-4567</a></p>
-              <p><strong>Email</strong><br /><a href="mailto:hello@qualitymarble.com">hello@qualitymarble.com</a></p>
-              <p><strong>Showroom hours</strong><br />Mon–Fri 8:00am–5:00pm<br />Saturday by appointment</p>
-            </div>
-          </div>
-          <form class="contact-form fade-in" id="contactForm">
-            <div class="form-row">
-              <label class="field">
-                <span>First name</span>
-                <input type="text" name="fname" required />
-              </label>
-              <label class="field">
-                <span>Last name</span>
-                <input type="text" name="lname" required />
-              </label>
-            </div>
-            <label class="field">
-              <span>Email</span>
-              <input type="email" name="email" required />
-            </label>
-            <label class="field">
-              <span>Project type</span>
-              <select name="type">
-                <option value="">Please select</option>
-                <option>Kitchen countertop</option>
-                <option>Bathroom</option>
-                <option>Commercial</option>
-                <option>Flooring / cladding</option>
-                <option>Other</option>
-              </select>
-            </label>
-            <label class="field">
-              <span>Message</span>
-              <textarea name="message" rows="4" placeholder="Tell us about your project"></textarea>
-            </label>
-            <button type="submit" class="btn btn-primary">Send enquiry</button>
-          </form>
-        </div>
+      <section class="cta-band wrap">
+        <h2>Ready to discuss your project?</h2>
+        <p>Speak with Marco and our team directly — no forms, just a conversation.</p>
+        <a href="contact.html" class="btn btn-dark">Contact us</a>
       </section>
     </main>
 
     <footer class="footer wrap">
       <p class="footer-brand">Quality Granite &amp; Marble</p>
       <nav class="footer-nav" aria-label="Footer">
-        <a href="#">Privacy</a>
-        <a href="#">Instagram</a>
-        <a href="#contact">Contact</a>
+        <a href="contact.html">Contact</a>
+        <a href="index.html#materials">Materials</a>
       </nav>
       <p class="footer-copy">© 2025 Quality Granite and Marble</p>
     </footer>
